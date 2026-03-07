@@ -122,14 +122,22 @@ header{flex-shrink:0;display:flex;align-items:center;gap:14px;padding:12px 18px;
 .ab-desc{font-size:11.5px;line-height:1.75;color:var(--mute2);margin-top:9px;padding-top:9px;border-top:1px solid var(--bdr);display:none}
 .ab-item.open .ab-desc{display:block}
 /* EVOLUTION */
-.evo-chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.evo-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:10px 8px;border-radius:12px;border:1px solid transparent;transition:all .2s;flex:1;min-width:70px;max-width:110px}
+.evo-chain{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center}
+.evo-fan{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.evo-fan-top{display:flex;justify-content:center}
+.evo-fan-arrow{color:var(--mute);font-size:20px;letter-spacing:2px}
+.evo-fan-row{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}
+.evo-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:7px 5px;border-radius:10px;border:1px solid transparent;transition:all .2s;min-width:52px;max-width:80px}
 .evo-item:hover{background:rgba(255,255,255,.04);border-color:var(--bdr)}
 .evo-item.cur{background:rgba(255,255,255,.07);border-color:var(--bdr2)}
-.evo-item img{width:62px;height:62px;object-fit:contain}
-.evo-name{font-size:11px;font-weight:800;color:var(--txt);text-align:center;text-transform:capitalize}
-.evo-num{font-size:9px;color:var(--mute);font-weight:700}
-.evo-arr{color:var(--mute);font-size:22px;flex-shrink:0}
+.evo-item img{width:46px;height:46px;object-fit:contain}
+.evo-name{font-size:10px;font-weight:800;color:var(--txt);text-align:center;text-transform:capitalize}
+.evo-num{font-size:8px;color:var(--mute);font-weight:700}
+.evo-arr{color:var(--mute);font-size:18px;flex-shrink:0}
+.evo-branch{display:flex;flex-direction:column;gap:4px;align-items:center}
+.evo-split-arrows{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;flex-shrink:0}
+.evo-arr-up,.evo-arr-dn{color:var(--mute);font-size:18px;line-height:1}
+.evo-branch-label{font-size:8px;color:var(--mute);text-align:center;font-weight:700;letter-spacing:.5px}
 /* TYPE COLORS */
 .t-normal{background:#6e6e58}.t-fire{background:#c44e00}.t-water{background:#3060d0}
 .t-electric{background:#a07c00}.t-grass{background:#287828}
@@ -269,26 +277,26 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":40,"name":"Wigglytuff","types":["normal", "fairy"],"h":10,"w":120,"exp":196,"ab":[["cute-charm", 0], ["frisk", 1]],"stats":[140, 70, 45, 85, 50, 45],"fl":"The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.","evo":[174, 39, 40]},
 {"id":41,"name":"Zubat","types":["poison", "flying"],"h":8,"w":75,"exp":49,"ab":[["inner-focus", 0], ["infiltrator", 1]],"stats":[40, 45, 35, 30, 40, 55],"fl":"Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.","evo":[41, 42, 169]},
 {"id":42,"name":"Golbat","types":["poison", "flying"],"h":16,"w":550,"exp":159,"ab":[["inner-focus", 0], ["infiltrator", 1]],"stats":[75, 80, 70, 65, 75, 90],"fl":"Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.","evo":[41, 42, 169]},
-{"id":43,"name":"Oddish","types":["grass", "poison"],"h":5,"w":54,"exp":64,"ab":[["chlorophyll", 0], ["run-away", 1]],"stats":[45, 50, 55, 75, 65, 30],"fl":"During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.","evo":[43, 44, 45]},
-{"id":44,"name":"Gloom","types":["grass", "poison"],"h":8,"w":86,"exp":138,"ab":[["chlorophyll", 0], ["stench", 1]],"stats":[60, 65, 70, 85, 75, 40],"fl":"The fluid that oozes from its mouth is a nectar that is used to attract prey.","evo":[43, 44, 45]},
-{"id":45,"name":"Vileplume","types":["grass", "poison"],"h":12,"w":186,"exp":221,"ab":[["chlorophyll", 0], ["effect-spore", 1]],"stats":[75, 80, 85, 110, 90, 50],"fl":"The larger its petals, the more toxic pollen it contains. Its big head is heavy and hard to hold up.","evo":[43, 44, 45]},
+{"id":43,"name":"Oddish","types":["grass", "poison"],"h":5,"w":54,"exp":64,"ab":[["chlorophyll", 0], ["run-away", 1]],"stats":[45, 50, 55, 75, 65, 30],"fl":"During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.","evo":[43, 44, 45, 182]},
+{"id":44,"name":"Gloom","types":["grass", "poison"],"h":8,"w":86,"exp":138,"ab":[["chlorophyll", 0], ["stench", 1]],"stats":[60, 65, 70, 85, 75, 40],"fl":"The fluid that oozes from its mouth is a nectar that is used to attract prey.","evo":[43, 44, 45, 182]},
+{"id":45,"name":"Vileplume","types":["grass", "poison"],"h":12,"w":186,"exp":221,"ab":[["chlorophyll", 0], ["effect-spore", 1]],"stats":[75, 80, 85, 110, 90, 50],"fl":"The larger its petals, the more toxic pollen it contains. Its big head is heavy and hard to hold up.","evo":[43, 44, 45, 182]},
 {"id":46,"name":"Paras","types":["bug", "grass"],"h":3,"w":54,"exp":57,"ab":[["effect-spore", 0], ["damp", 1]],"stats":[35, 70, 55, 45, 55, 25],"fl":"Burrows to suck tree roots. The mushrooms on its back grow by drawing nutrients from the bug host.","evo":[46, 47]},
 {"id":47,"name":"Parasect","types":["bug", "grass"],"h":10,"w":295,"exp":142,"ab":[["effect-spore", 0], ["damp", 1]],"stats":[60, 95, 80, 60, 80, 30],"fl":"A host-parasite pair where the parasite mushroom has taken over the host bug. Attacks with spores.","evo":[46, 47]},
 {"id":48,"name":"Venonat","types":["bug", "poison"],"h":10,"w":300,"exp":61,"ab":[["compound-eyes", 0], ["run-away", 1]],"stats":[60, 55, 50, 40, 55, 45],"fl":"Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.","evo":[48, 49]},
 {"id":49,"name":"Venomoth","types":["bug", "poison"],"h":15,"w":125,"exp":158,"ab":[["shield-dust", 0], ["tinted-lens", 1]],"stats":[70, 65, 60, 90, 75, 90],"fl":"The dust-like scales covering its wings are color-coded to indicate the kinds of poison it has.","evo":[48, 49]},
 {"id":50,"name":"Diglett","types":["ground"],"h":2,"w":8,"exp":53,"ab":[["sand-veil", 0], ["sand-force", 1]],"stats":[10, 55, 25, 35, 45, 95],"fl":"Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.","evo":[50, 51]},
 {"id":51,"name":"Dugtrio","types":["ground"],"h":7,"w":333,"exp":149,"ab":[["sand-veil", 0], ["sand-force", 1]],"stats":[35, 100, 50, 50, 70, 120],"fl":"A team of Diglett triplets. It triggers huge earthquakes by burrowing 60 miles underground.","evo":[50, 51]},
-{"id":52,"name":"Meowth","types":["normal"],"h":4,"w":42,"exp":58,"ab":[["pickup", 0], ["unnerve", 1]],"stats":[40, 45, 35, 40, 40, 90],"fl":"Adores circular objects. Wanders the streets on a nightly basis to look for dropped loose change.","evo":[52, 53]},
-{"id":53,"name":"Persian","types":["normal"],"h":10,"w":320,"exp":154,"ab":[["limber", 0], ["unnerve", 1]],"stats":[65, 70, 60, 65, 65, 115],"fl":"Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.","evo":[52, 53]},
+{"id":52,"name":"Meowth","types":["normal"],"h":4,"w":42,"exp":58,"ab":[["pickup", 0], ["unnerve", 1]],"stats":[40, 45, 35, 40, 40, 90],"fl":"Adores circular objects. Wanders the streets on a nightly basis to look for dropped loose change.","evo":[52, 53, 863]},
+{"id":53,"name":"Persian","types":["normal"],"h":10,"w":320,"exp":154,"ab":[["limber", 0], ["unnerve", 1]],"stats":[65, 70, 60, 65, 65, 115],"fl":"Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.","evo":[52, 53, 863]},
 {"id":54,"name":"Psyduck","types":["water"],"h":8,"w":196,"exp":64,"ab":[["damp", 0], ["swift-swim", 1]],"stats":[50, 52, 48, 65, 50, 55],"fl":"While lulled to a deep sleep by its headache, it may exhibit strong psychic powers.","evo":[54, 55]},
 {"id":55,"name":"Golduck","types":["water"],"h":17,"w":766,"exp":175,"ab":[["damp", 0], ["swift-swim", 1]],"stats":[80, 82, 78, 95, 80, 85],"fl":"Often seen swimming elegantly by lake shores. It is capable of swimming through gale-driven waves.","evo":[54, 55]},
-{"id":56,"name":"Mankey","types":["fighting"],"h":5,"w":280,"exp":61,"ab":[["vital-spirit", 0], ["defiant", 1]],"stats":[40, 80, 35, 35, 45, 70],"fl":"Extremely quick to anger. It could be docile one moment then thrashing away the next instant.","evo":[56, 57]},
-{"id":57,"name":"Primeape","types":["fighting"],"h":10,"w":320,"exp":159,"ab":[["vital-spirit", 0], ["defiant", 1]],"stats":[65, 105, 60, 60, 70, 95],"fl":"It becomes wildly furious if it senses someone looking at it. It chases anyone that meets its glare.","evo":[56, 57]},
+{"id":56,"name":"Mankey","types":["fighting"],"h":5,"w":280,"exp":61,"ab":[["vital-spirit", 0], ["defiant", 1]],"stats":[40, 80, 35, 35, 45, 70],"fl":"Extremely quick to anger. It could be docile one moment then thrashing away the next instant.","evo":[56, 57, 979]},
+{"id":57,"name":"Primeape","types":["fighting"],"h":10,"w":320,"exp":159,"ab":[["vital-spirit", 0], ["defiant", 1]],"stats":[65, 105, 60, 60, 70, 95],"fl":"It becomes wildly furious if it senses someone looking at it. It chases anyone that meets its glare.","evo":[56, 57, 979]},
 {"id":58,"name":"Growlithe","types":["fire"],"h":7,"w":190,"exp":70,"ab":[["intimidate", 0], ["justified", 1]],"stats":[55, 70, 45, 70, 50, 60],"fl":"Very protective of its territory. It will bark and bite to repel intruders from its space.","evo":[58, 59]},
 {"id":59,"name":"Arcanine","types":["fire"],"h":19,"w":1550,"exp":194,"ab":[["intimidate", 0], ["justified", 1]],"stats":[90, 110, 80, 100, 80, 95],"fl":"A Pokemon that has been admired since the past for its beauty. It runs agilely as if on wings.","evo":[58, 59]},
-{"id":60,"name":"Poliwag","types":["water"],"h":6,"w":124,"exp":60,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[40, 50, 40, 40, 40, 90],"fl":"Its newly grown legs prevent it from running. It appears to prefer swimming over everything else.","evo":[60, 61, 62]},
-{"id":61,"name":"Poliwhirl","types":["water"],"h":10,"w":200,"exp":135,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[65, 65, 65, 50, 50, 90],"fl":"Capable of living in or out of water. When out of water, it sweats to keep its body slimy.","evo":[60, 61, 62]},
-{"id":62,"name":"Poliwrath","types":["water", "fighting"],"h":13,"w":540,"exp":230,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[90, 95, 95, 70, 90, 70],"fl":"An adept swimmer at both the front crawl and breaststroke. Easily overtakes the best human swimmers.","evo":[60, 61, 62]},
+{"id":60,"name":"Poliwag","types":["water"],"h":6,"w":124,"exp":60,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[40, 50, 40, 40, 40, 90],"fl":"Its newly grown legs prevent it from running. It appears to prefer swimming over everything else.","evo":[60, 61, 62, 186]},
+{"id":61,"name":"Poliwhirl","types":["water"],"h":10,"w":200,"exp":135,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[65, 65, 65, 50, 50, 90],"fl":"Capable of living in or out of water. When out of water, it sweats to keep its body slimy.","evo":[60, 61, 62, 186]},
+{"id":62,"name":"Poliwrath","types":["water", "fighting"],"h":13,"w":540,"exp":230,"ab":[["water-absorb", 0], ["swift-swim", 1]],"stats":[90, 95, 95, 70, 90, 70],"fl":"An adept swimmer at both the front crawl and breaststroke. Easily overtakes the best human swimmers.","evo":[60, 61, 62, 186]},
 {"id":63,"name":"Abra","types":["psychic"],"h":9,"w":195,"exp":62,"ab":[["synchronize", 0], ["magic-guard", 1]],"stats":[25, 20, 15, 105, 55, 90],"fl":"Using its ability to read minds, it will identify impending danger and teleport to safety.","evo":[63, 64, 65]},
 {"id":64,"name":"Kadabra","types":["psychic"],"h":13,"w":565,"exp":140,"ab":[["synchronize", 0], ["magic-guard", 1]],"stats":[40, 35, 30, 120, 70, 105],"fl":"It emits special alpha waves from its body that induce headaches just by being close to it.","evo":[63, 64, 65]},
 {"id":65,"name":"Alakazam","types":["psychic"],"h":15,"w":480,"exp":225,"ab":[["synchronize", 0], ["magic-guard", 1]],"stats":[55, 50, 45, 135, 95, 120],"fl":"Its brain can outperform a supercomputer. Its intelligence quotient is said to be 5000.","evo":[63, 64, 65]},
@@ -305,11 +313,11 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":76,"name":"Golem","types":["rock", "ground"],"h":14,"w":3000,"exp":223,"ab":[["rock-head", 0], ["sand-veil", 1]],"stats":[80, 120, 130, 55, 65, 45],"fl":"Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.","evo":[74, 75, 76]},
 {"id":77,"name":"Ponyta","types":["fire"],"h":10,"w":300,"exp":82,"ab":[["run-away", 0], ["flame-body", 1]],"stats":[50, 85, 55, 65, 65, 90],"fl":"Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.","evo":[77, 78]},
 {"id":78,"name":"Rapidash","types":["fire"],"h":17,"w":950,"exp":175,"ab":[["run-away", 0], ["flame-body", 1]],"stats":[65, 100, 70, 80, 80, 105],"fl":"Very competitive, this Pokemon will chase anything that moves fast in the hopes of racing it.","evo":[77, 78]},
-{"id":79,"name":"Slowpoke","types":["water", "psychic"],"h":12,"w":360,"exp":63,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[90, 65, 65, 40, 40, 15],"fl":"Incredibly slow and dull. It takes 5 seconds for it to feel pain when under attack.","evo":[79, 80]},
-{"id":80,"name":"Slowbro","types":["water", "psychic"],"h":16,"w":785,"exp":172,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[95, 75, 110, 100, 80, 30],"fl":"The Shellder latched onto its tail is said to feed on the host left over scraps.","evo":[79, 80]},
+{"id":79,"name":"Slowpoke","types":["water", "psychic"],"h":12,"w":360,"exp":63,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[90, 65, 65, 40, 40, 15],"fl":"Incredibly slow and dull. It takes 5 seconds for it to feel pain when under attack.","evo":[79, 80, 199]},
+{"id":80,"name":"Slowbro","types":["water", "psychic"],"h":16,"w":785,"exp":172,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[95, 75, 110, 100, 80, 30],"fl":"The Shellder latched onto its tail is said to feed on the host left over scraps.","evo":[79, 80, 199]},
 {"id":81,"name":"Magnemite","types":["electric", "steel"],"h":3,"w":60,"exp":65,"ab":[["magnet-pull", 0], ["analytic", 1]],"stats":[25, 35, 70, 95, 55, 45],"fl":"Floats in the air by emitting electromagnetic waves. It may approach people if it senses electricity.","evo":[81, 82]},
 {"id":82,"name":"Magneton","types":["electric", "steel"],"h":10,"w":600,"exp":163,"ab":[["magnet-pull", 0], ["analytic", 1]],"stats":[50, 60, 95, 120, 70, 70],"fl":"Formed by several Magnemite linked together. It frequently appears when sunspots flare up.","evo":[81, 82]},
-{"id":83,"name":"Farfetchd","types":["normal", "flying"],"h":8,"w":150,"exp":132,"ab":[["keen-eye", 0], ["defiant", 1]],"stats":[52, 90, 55, 58, 62, 60],"fl":"The plant stalk it holds is its weapon. It bravely fights those who would disturb its rest.","evo":[83]},
+{"id":83,"name":"Farfetchd","types":["normal", "flying"],"h":8,"w":150,"exp":132,"ab":[["keen-eye", 0], ["defiant", 1]],"stats":[52, 90, 55, 58, 62, 60],"fl":"The plant stalk it holds is its weapon. It bravely fights those who would disturb its rest.","evo":[83, 865]},
 {"id":84,"name":"Doduo","types":["normal", "flying"],"h":14,"w":392,"exp":62,"ab":[["run-away", 0], ["tangled-feet", 1]],"stats":[35, 85, 45, 35, 35, 75],"fl":"A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints.","evo":[84, 85]},
 {"id":85,"name":"Dodrio","types":["normal", "flying"],"h":18,"w":852,"exp":165,"ab":[["run-away", 0], ["tangled-feet", 1]],"stats":[60, 110, 70, 60, 60, 110],"fl":"Uses its three brains to execute complex plans. While two heads sleep, one stays awake.","evo":[84, 85]},
 {"id":86,"name":"Seel","types":["water"],"h":11,"w":900,"exp":65,"ab":[["thick-fat", 0], ["ice-body", 1]],"stats":[65, 45, 55, 45, 70, 45],"fl":"The protruding horn on its head is very hard. It is used to break up ice in the Arctic waters.","evo":[86, 87]},
@@ -332,8 +340,8 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":103,"name":"Exeggutor","types":["grass", "psychic"],"h":20,"w":1200,"exp":182,"ab":[["chlorophyll", 0], ["harvest", 1]],"stats":[95, 95, 85, 125, 65, 55],"fl":"Legend has it that on rare occasions, one of its heads will drop off and continue on as an Exeggcute.","evo":[102, 103]},
 {"id":104,"name":"Cubone","types":["ground"],"h":4,"w":65,"exp":64,"ab":[["rock-head", 0], ["battle-armor", 1]],"stats":[50, 50, 95, 40, 50, 35],"fl":"Because it never removes its skull helmet, no one has ever seen this Pokemon real face.","evo":[104, 105]},
 {"id":105,"name":"Marowak","types":["ground"],"h":10,"w":450,"exp":149,"ab":[["rock-head", 0], ["battle-armor", 1]],"stats":[60, 80, 110, 50, 80, 45],"fl":"The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to knock out targets.","evo":[104, 105]},
-{"id":106,"name":"Hitmonlee","types":["fighting"],"h":15,"w":498,"exp":159,"ab":[["limber", 0], ["unburden", 1]],"stats":[50, 120, 53, 35, 110, 87],"fl":"When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.","evo":[236, 106]},
-{"id":107,"name":"Hitmonchan","types":["fighting"],"h":14,"w":502,"exp":159,"ab":[["keen-eye", 0], ["inner-focus", 1]],"stats":[50, 105, 79, 35, 110, 76],"fl":"While seemingly doing nothing, it fires punches in lightning fast volleys that are impossible to see.","evo":[236, 107]},
+{"id":106,"name":"Hitmonlee","types":["fighting"],"h":15,"w":498,"exp":159,"ab":[["limber", 0], ["unburden", 1]],"stats":[50, 120, 53, 35, 110, 87],"fl":"When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.","evo":[236, 106, 107, 237]},
+{"id":107,"name":"Hitmonchan","types":["fighting"],"h":14,"w":502,"exp":159,"ab":[["keen-eye", 0], ["inner-focus", 1]],"stats":[50, 105, 79, 35, 110, 76],"fl":"While seemingly doing nothing, it fires punches in lightning fast volleys that are impossible to see.","evo":[236, 106, 107, 237]},
 {"id":108,"name":"Lickitung","types":["normal"],"h":12,"w":655,"exp":77,"ab":[["own-tempo", 0], ["cloud-nine", 1]],"stats":[90, 55, 75, 60, 75, 30],"fl":"Its tongue can be extended like a chameleon. It leaves a tingling sensation when it licks enemies.","evo":[108]},
 {"id":109,"name":"Koffing","types":["poison"],"h":6,"w":10,"exp":68,"ab":[["levitate", 0], ["stench", 1]],"stats":[40, 65, 95, 60, 45, 35],"fl":"Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning.","evo":[109, 110]},
 {"id":110,"name":"Weezing","types":["poison"],"h":12,"w":95,"exp":172,"ab":[["levitate", 0], ["stench", 1]],"stats":[65, 90, 120, 85, 70, 60],"fl":"Where two kinds of poison gases meet, two Koffing are said to fuse into a Weezing over many years.","evo":[109, 110]},
@@ -349,7 +357,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":120,"name":"Staryu","types":["water"],"h":8,"w":345,"exp":68,"ab":[["illuminate", 0], ["analytic", 1]],"stats":[30, 45, 55, 70, 55, 85],"fl":"An enigmatic Pokemon that can effortlessly regenerate any appendage it loses in battle.","evo":[120, 121]},
 {"id":121,"name":"Starmie","types":["water", "psychic"],"h":11,"w":800,"exp":182,"ab":[["illuminate", 0], ["analytic", 1]],"stats":[60, 75, 85, 100, 85, 115],"fl":"Its central core glows with the seven colors of the rainbow. Some people value the core as a gem.","evo":[120, 121]},
 {"id":122,"name":"Mr. Mime","types":["psychic", "fairy"],"h":13,"w":545,"exp":161,"ab":[["soundproof", 0], ["technician", 1]],"stats":[40, 45, 65, 100, 120, 90],"fl":"If interrupted while miming, it will slap around the offender with its broad hands.","evo":[122]},
-{"id":123,"name":"Scyther","types":["bug", "flying"],"h":15,"w":560,"exp":100,"ab":[["swarm", 0], ["steadfast", 1]],"stats":[70, 110, 80, 55, 80, 105],"fl":"With ninja-like agility and speed, it can create the illusion that there is more than one.","evo":[123, 212]},
+{"id":123,"name":"Scyther","types":["bug", "flying"],"h":15,"w":560,"exp":100,"ab":[["swarm", 0], ["steadfast", 1]],"stats":[70, 110, 80, 55, 80, 105],"fl":"With ninja-like agility and speed, it can create the illusion that there is more than one.","evo":[123, 212, 900]},
 {"id":124,"name":"Jynx","types":["ice", "psychic"],"h":14,"w":406,"exp":159,"ab":[["oblivious", 0], ["dry-skin", 1]],"stats":[65, 50, 35, 115, 95, 95],"fl":"It seductively wiggles its hips as it walks. It can cause people to dance in unison with it.","evo":[238, 124]},
 {"id":125,"name":"Electabuzz","types":["electric"],"h":11,"w":300,"exp":172,"ab":[["static", 0], ["vital-spirit", 1]],"stats":[65, 83, 57, 95, 85, 105],"fl":"Normally found near power plants, they can wander away and cause major blackouts in cities.","evo":[239, 125]},
 {"id":126,"name":"Magmar","types":["fire"],"h":13,"w":445,"exp":173,"ab":[["flame-body", 0], ["vital-spirit", 1]],"stats":[65, 95, 57, 100, 85, 93],"fl":"Its body always burns with an orange glow that enables it to hide perfectly among flames.","evo":[240, 126]},
@@ -359,10 +367,10 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":130,"name":"Gyarados","types":["water", "flying"],"h":65,"w":2350,"exp":189,"ab":[["intimidate", 0], ["moxie", 1]],"stats":[95, 125, 79, 60, 100, 81],"fl":"Once it begins to rampage, a Gyarados will burn everything down, even in a harsh storm.","evo":[129, 130]},
 {"id":131,"name":"Lapras","types":["water", "ice"],"h":25,"w":2200,"exp":187,"ab":[["water-absorb", 0], ["hydration", 1]],"stats":[130, 85, 80, 85, 95, 60],"fl":"A gentle soul that can read the hearts of people. It slowly trolls the ocean and sings while it swims.","evo":[131]},
 {"id":132,"name":"Ditto","types":["normal"],"h":3,"w":40,"exp":101,"ab":[["limber", 0], ["imposter", 1]],"stats":[48, 48, 48, 48, 48, 48],"fl":"Capable of copying an enemy genetic code to instantly transform itself into a duplicate of the enemy.","evo":[132]},
-{"id":133,"name":"Eevee","types":["normal"],"h":3,"w":65,"exp":65,"ab":[["run-away", 0], ["anticipation", 1]],"stats":[55, 55, 50, 45, 65, 55],"fl":"Its genetic code is irregular. It may mutate if it is exposed to radiation from element Stones.","evo":[133, 134, 135, 136, 196, 197, 470, 471]},
-{"id":134,"name":"Vaporeon","types":["water"],"h":10,"w":290,"exp":184,"ab":[["water-absorb", 0], ["hydration", 1]],"stats":[130, 65, 60, 110, 95, 65],"fl":"Vaporeon cell composition is similar to water molecules. As a result, it can melt away into water.","evo":[133, 134]},
-{"id":135,"name":"Jolteon","types":["electric"],"h":8,"w":245,"exp":184,"ab":[["volt-absorb", 0], ["quick-feet", 1]],"stats":[65, 65, 60, 110, 95, 130],"fl":"It accumulates negative ions in the atmosphere to blast out 10000-volt lightning bolts.","evo":[133, 135]},
-{"id":136,"name":"Flareon","types":["fire"],"h":9,"w":250,"exp":184,"ab":[["flash-fire", 0], ["guts", 1]],"stats":[65, 130, 60, 95, 110, 65],"fl":"When storing thermal energy in its body, its temperature could soar to over 1600 degrees.","evo":[133, 136]},
+{"id":133,"name":"Eevee","types":["normal"],"h":3,"w":65,"exp":65,"ab":[["run-away", 0], ["anticipation", 1]],"stats":[55, 55, 50, 45, 65, 55],"fl":"Its genetic code is irregular. It may mutate if it is exposed to radiation from element Stones.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
+{"id":134,"name":"Vaporeon","types":["water"],"h":10,"w":290,"exp":184,"ab":[["water-absorb", 0], ["hydration", 1]],"stats":[130, 65, 60, 110, 95, 65],"fl":"Vaporeon cell composition is similar to water molecules. As a result, it can melt away into water.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
+{"id":135,"name":"Jolteon","types":["electric"],"h":8,"w":245,"exp":184,"ab":[["volt-absorb", 0], ["quick-feet", 1]],"stats":[65, 65, 60, 110, 95, 130],"fl":"It accumulates negative ions in the atmosphere to blast out 10000-volt lightning bolts.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
+{"id":136,"name":"Flareon","types":["fire"],"h":9,"w":250,"exp":184,"ab":[["flash-fire", 0], ["guts", 1]],"stats":[65, 130, 60, 95, 110, 65],"fl":"When storing thermal energy in its body, its temperature could soar to over 1600 degrees.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
 {"id":137,"name":"Porygon","types":["normal"],"h":8,"w":365,"exp":79,"ab":[["trace", 0], ["analytic", 1]],"stats":[65, 60, 70, 85, 75, 40],"fl":"A Pokemon that consists entirely of programming code. Capable of moving freely in cyberspace.","evo":[137, 233]},
 {"id":138,"name":"Omanyte","types":["rock", "water"],"h":4,"w":75,"exp":71,"ab":[["swift-swim", 0], ["weak-armor", 1]],"stats":[35, 40, 100, 90, 55, 35],"fl":"Although long extinct, in rare cases, it can be genetically resurrected from fossils.","evo":[138, 139]},
 {"id":139,"name":"Omastar","types":["rock", "water"],"h":10,"w":350,"exp":173,"ab":[["swift-swim", 0], ["weak-armor", 1]],"stats":[70, 60, 125, 115, 70, 55],"fl":"A prehistoric Pokemon that died out when its spiral shell grew too large for it to move easily.","evo":[138, 139]},
@@ -408,11 +416,11 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":179,"name":"Mareep","types":["electric"],"h":6,"w":77,"exp":56,"ab":[["static", 0], ["plus", 1]],"stats":[55, 40, 40, 65, 45, 35],"fl":"If static electricity builds in its body, its fleece doubles in volume. Touching it will jolt you.","evo":[179, 180, 181]},
 {"id":180,"name":"Flaaffy","types":["electric"],"h":8,"w":133,"exp":128,"ab":[["static", 0], ["plus", 1]],"stats":[70, 55, 55, 80, 60, 45],"fl":"As a result of storing too much electricity, it developed patches where electricity will not discharge.","evo":[179, 180, 181]},
 {"id":181,"name":"Ampharos","types":["electric"],"h":14,"w":615,"exp":230,"ab":[["static", 0], ["plus", 1]],"stats":[90, 75, 85, 115, 90, 55],"fl":"The tip of its tail shines brilliantly and can be seen from far away. It acts as a beacon for lost people.","evo":[179, 180, 181]},
-{"id":182,"name":"Bellossom","types":["grass"],"h":4,"w":58,"exp":221,"ab":[["chlorophyll", 0], ["healer", 1]],"stats":[75, 80, 95, 90, 100, 50],"fl":"When its petals are gone, it evolves. It gets rid of any body odor by dancing in the sun.","evo":[43, 44, 182]},
+{"id":182,"name":"Bellossom","types":["grass"],"h":4,"w":58,"exp":221,"ab":[["chlorophyll", 0], ["healer", 1]],"stats":[75, 80, 95, 90, 100, 50],"fl":"When its petals are gone, it evolves. It gets rid of any body odor by dancing in the sun.","evo":[43, 44, 45, 182]},
 {"id":183,"name":"Marill","types":["water", "fairy"],"h":4,"w":85,"exp":88,"ab":[["thick-fat", 0], ["sap-sipper", 1]],"stats":[70, 20, 50, 20, 50, 40],"fl":"The tip of its tail contains oil lighter than water, keeping it from drowning even in fierce currents.","evo":[298, 183, 184]},
 {"id":184,"name":"Azumarill","types":["water", "fairy"],"h":8,"w":285,"exp":189,"ab":[["thick-fat", 0], ["sap-sipper", 1]],"stats":[100, 50, 80, 60, 80, 50],"fl":"By keeping still and listening intently, it can tell what is in even wild, fast-moving rivers.","evo":[298, 183, 184]},
 {"id":185,"name":"Sudowoodo","types":["rock"],"h":12,"w":380,"exp":144,"ab":[["sturdy", 0], ["rattled", 1]],"stats":[70, 100, 115, 30, 65, 30],"fl":"Although it is disguised as a tree, its body composition is closer to a rock or a crystal.","evo":[185]},
-{"id":186,"name":"Politoed","types":["water"],"h":11,"w":339,"exp":225,"ab":[["water-absorb", 0], ["drizzle", 1]],"stats":[90, 75, 75, 90, 100, 70],"fl":"The final form of Poliwag. It summons Poliwag from everywhere with its loud bellowing.","evo":[60, 61, 186]},
+{"id":186,"name":"Politoed","types":["water"],"h":11,"w":339,"exp":225,"ab":[["water-absorb", 0], ["drizzle", 1]],"stats":[90, 75, 75, 90, 100, 70],"fl":"The final form of Poliwag. It summons Poliwag from everywhere with its loud bellowing.","evo":[60, 61, 62, 186]},
 {"id":187,"name":"Hoppip","types":["grass", "flying"],"h":4,"w":5,"exp":52,"ab":[["chlorophyll", 0], ["infiltrator", 1]],"stats":[35, 35, 40, 35, 55, 50],"fl":"So light, it must grip the ground firmly with its feet to keep from being blown away by gusts.","evo":[187, 188, 189]},
 {"id":188,"name":"Skiploom","types":["grass", "flying"],"h":6,"w":10,"exp":119,"ab":[["chlorophyll", 0], ["infiltrator", 1]],"stats":[55, 45, 50, 45, 65, 80],"fl":"The flower on its head opens and closes as the temperature fluctuates. It blooms in warm weather.","evo":[187, 188, 189]},
 {"id":189,"name":"Jumpluff","types":["grass", "flying"],"h":8,"w":30,"exp":207,"ab":[["chlorophyll", 0], ["infiltrator", 1]],"stats":[75, 55, 70, 55, 95, 110],"fl":"Drifts on seasonal winds and spreads its cotton spores to distant areas. It travels widely.","evo":[187, 188, 189]},
@@ -422,10 +430,10 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":193,"name":"Yanma","types":["bug", "flying"],"h":12,"w":380,"exp":78,"ab":[["speed-boost", 0], ["frisk", 1]],"stats":[65, 65, 45, 75, 45, 95],"fl":"If it flaps its wings very fast, it can generate shock waves that will shatter windows in the area.","evo":[193]},
 {"id":194,"name":"Wooper","types":["water", "ground"],"h":4,"w":85,"exp":42,"ab":[["damp", 0], ["unaware", 1]],"stats":[55, 45, 45, 25, 25, 15],"fl":"It lives in cold water. It comes onto land during the night to look for food. It walks clumsily on land.","evo":[194, 195]},
 {"id":195,"name":"Quagsire","types":["water", "ground"],"h":14,"w":750,"exp":151,"ab":[["damp", 0], ["unaware", 1]],"stats":[95, 85, 85, 65, 65, 35],"fl":"A dimwitted Pokemon with a sluggish nature. It has a policy of not being on guard and not exerting itself.","evo":[194, 195]},
-{"id":196,"name":"Espeon","types":["psychic"],"h":9,"w":265,"exp":184,"ab":[["synchronize", 0], ["magic-bounce", 1]],"stats":[65, 65, 60, 130, 95, 110],"fl":"By reading air currents, it can predict things such as the weather or its foe next move.","evo":[133, 196]},
-{"id":197,"name":"Umbreon","types":["dark"],"h":10,"w":270,"exp":184,"ab":[["synchronize", 0], ["inner-focus", 1]],"stats":[95, 65, 110, 60, 130, 65],"fl":"When this Pokemon becomes angry, its pores secrete a poisonous sweat, which it sprays at its target.","evo":[133, 197]},
+{"id":196,"name":"Espeon","types":["psychic"],"h":9,"w":265,"exp":184,"ab":[["synchronize", 0], ["magic-bounce", 1]],"stats":[65, 65, 60, 130, 95, 110],"fl":"By reading air currents, it can predict things such as the weather or its foe next move.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
+{"id":197,"name":"Umbreon","types":["dark"],"h":10,"w":270,"exp":184,"ab":[["synchronize", 0], ["inner-focus", 1]],"stats":[95, 65, 110, 60, 130, 65],"fl":"When this Pokemon becomes angry, its pores secrete a poisonous sweat, which it sprays at its target.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
 {"id":198,"name":"Murkrow","types":["dark", "flying"],"h":5,"w":21,"exp":56,"ab":[["insomnia", 0], ["prankster", 1]],"stats":[60, 85, 42, 85, 42, 91],"fl":"Feared and loathed by many, it is believed to bring misfortune to all those who see it at night.","evo":[198]},
-{"id":199,"name":"Slowking","types":["water", "psychic"],"h":20,"w":795,"exp":172,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[95, 75, 80, 100, 110, 30],"fl":"It has incredible intellect and intuition. Whatever the situation, it remains calm and collected.","evo":[79, 199]},
+{"id":199,"name":"Slowking","types":["water", "psychic"],"h":20,"w":795,"exp":172,"ab":[["oblivious", 0], ["regenerator", 1]],"stats":[95, 75, 80, 100, 110, 30],"fl":"It has incredible intellect and intuition. Whatever the situation, it remains calm and collected.","evo":[79, 80, 199]},
 {"id":200,"name":"Misdreavus","types":["ghost"],"h":7,"w":10,"exp":87,"ab":[["levitate", 0]],"stats":[60, 60, 60, 85, 85, 85],"fl":"It likes to sneak up on people late at night, then startle them with its eerie shriek.","evo":[200]},
 {"id":201,"name":"Unown","types":["psychic"],"h":5,"w":50,"exp":118,"ab":[["levitate", 0]],"stats":[48, 72, 48, 72, 48, 48],"fl":"Its flat body is dotted with hieroglyphs. There appear to be over 26 varieties of Unown.","evo":[201]},
 {"id":202,"name":"Wobbuffet","types":["psychic"],"h":13,"w":285,"exp":142,"ab":[["shadow-tag", 0], ["telepathy", 1]],"stats":[190, 33, 58, 33, 58, 33],"fl":"It hates light and shock. If attacked, it inflates its body to pump up its counter power.","evo":[202]},
@@ -433,17 +441,17 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":204,"name":"Pineco","types":["bug"],"h":6,"w":72,"exp":58,"ab":[["sturdy", 0], ["overcoat", 1]],"stats":[50, 65, 90, 35, 35, 15],"fl":"It pretends to be a pinecone. When it falls from a tree, it contracts its body to absorb the impact.","evo":[204, 205]},
 {"id":205,"name":"Forretress","types":["bug", "steel"],"h":12,"w":1258,"exp":163,"ab":[["sturdy", 0], ["overcoat", 1]],"stats":[75, 90, 140, 60, 60, 40],"fl":"Its entire body is shielded by a hard shell. Whatever is inside is a mystery. No one has ever seen its face.","evo":[204, 205]},
 {"id":206,"name":"Dunsparce","types":["normal"],"h":15,"w":140,"exp":145,"ab":[["serene-grace", 0], ["rattled", 1]],"stats":[100, 70, 70, 65, 65, 45],"fl":"It lives in dark caves. If spotted, it flees immediately by burrowing into the ground with its tail.","evo":[206]},
-{"id":207,"name":"Gligar","types":["ground", "flying"],"h":11,"w":647,"exp":86,"ab":[["hyper-cutter", 0], ["immunity", 1]],"stats":[65, 75, 105, 35, 65, 85],"fl":"It glides through the air without a sound. If its sting hits the target, it injects poison.","evo":[207]},
+{"id":207,"name":"Gligar","types":["ground", "flying"],"h":11,"w":647,"exp":86,"ab":[["hyper-cutter", 0], ["immunity", 1]],"stats":[65, 75, 105, 35, 65, 85],"fl":"It glides through the air without a sound. If its sting hits the target, it injects poison.","evo":[207, 472]},
 {"id":208,"name":"Steelix","types":["steel", "ground"],"h":92,"w":4000,"exp":179,"ab":[["rock-head", 0], ["sheer-force", 1]],"stats":[75, 85, 200, 55, 65, 30],"fl":"It is said to burrow toward the Earth core. The immense pressure and heat transformed it into a diamond-like body.","evo":[95, 208]},
 {"id":209,"name":"Snubbull","types":["fairy"],"h":6,"w":78,"exp":60,"ab":[["intimidate", 0], ["rattled", 1]],"stats":[60, 80, 50, 40, 40, 30],"fl":"It frightens enemies with its tough face. It is actually very sensitive and cries if it is startled.","evo":[209, 210]},
 {"id":210,"name":"Granbull","types":["fairy"],"h":14,"w":487,"exp":158,"ab":[["intimidate", 0], ["rattled", 1]],"stats":[90, 120, 75, 60, 60, 45],"fl":"Rarely seen in the wild. They like to show off, but when in trouble they tend to bite.","evo":[209, 210]},
-{"id":211,"name":"Qwilfish","types":["water", "poison"],"h":5,"w":39,"exp":88,"ab":[["poison-point", 0], ["intimidate", 1]],"stats":[65, 95, 85, 55, 55, 85],"fl":"Its small size makes it a poor swimmer easily blown about by ocean currents. It inflates for defense.","evo":[211]},
-{"id":212,"name":"Scizor","types":["bug", "steel"],"h":18,"w":1180,"exp":175,"ab":[["swarm", 0], ["technician", 1]],"stats":[70, 130, 100, 55, 80, 65],"fl":"This Pokemon is extremely tough with a body similar to tempered steel.","evo":[123, 212]},
+{"id":211,"name":"Qwilfish","types":["water", "poison"],"h":5,"w":39,"exp":88,"ab":[["poison-point", 0], ["intimidate", 1]],"stats":[65, 95, 85, 55, 55, 85],"fl":"Its small size makes it a poor swimmer easily blown about by ocean currents. It inflates for defense.","evo":[211, 904]},
+{"id":212,"name":"Scizor","types":["bug", "steel"],"h":18,"w":1180,"exp":175,"ab":[["swarm", 0], ["technician", 1]],"stats":[70, 130, 100, 55, 80, 65],"fl":"This Pokemon is extremely tough with a body similar to tempered steel.","evo":[123, 212, 900]},
 {"id":213,"name":"Shuckle","types":["bug", "rock"],"h":6,"w":205,"exp":177,"ab":[["sturdy", 0], ["contrary", 1]],"stats":[20, 10, 230, 10, 230, 5],"fl":"It stores berries inside its shell. To avoid attacks, it hides beneath rocks and remains completely still.","evo":[213]},
 {"id":214,"name":"Heracross","types":["bug", "fighting"],"h":15,"w":540,"exp":175,"ab":[["swarm", 0], ["moxie", 1]],"stats":[80, 125, 75, 40, 95, 85],"fl":"Heracross charges straight at its foe, slips under the grasp and flings the foe into the air.","evo":[214]},
-{"id":215,"name":"Sneasel","types":["dark", "ice"],"h":9,"w":280,"exp":86,"ab":[["inner-focus", 0], ["pickpocket", 1]],"stats":[55, 95, 55, 35, 75, 115],"fl":"A Pokemon that sneaks through the mountains. It is nasty and uses its claws to steal eggs.","evo":[215]},
-{"id":216,"name":"Teddiursa","types":["normal"],"h":6,"w":88,"exp":66,"ab":[["pickup", 0], ["honey-gather", 1]],"stats":[60, 80, 50, 50, 50, 40],"fl":"This Pokemon likes to lick its paws. It hides food under its armpits for emergency snacking.","evo":[216, 217]},
-{"id":217,"name":"Ursaring","types":["normal"],"h":18,"w":1258,"exp":175,"ab":[["guts", 0], ["unnerve", 1]],"stats":[90, 130, 75, 75, 75, 55],"fl":"In the forests inhabited by Ursaring, there are said to be more Berries and honey than in other forests.","evo":[216, 217]},
+{"id":215,"name":"Sneasel","types":["dark", "ice"],"h":9,"w":280,"exp":86,"ab":[["inner-focus", 0], ["pickpocket", 1]],"stats":[55, 95, 55, 35, 75, 115],"fl":"A Pokemon that sneaks through the mountains. It is nasty and uses its claws to steal eggs.","evo":[215, 461, 903]},
+{"id":216,"name":"Teddiursa","types":["normal"],"h":6,"w":88,"exp":66,"ab":[["pickup", 0], ["honey-gather", 1]],"stats":[60, 80, 50, 50, 50, 40],"fl":"This Pokemon likes to lick its paws. It hides food under its armpits for emergency snacking.","evo":[216, 217, 901]},
+{"id":217,"name":"Ursaring","types":["normal"],"h":18,"w":1258,"exp":175,"ab":[["guts", 0], ["unnerve", 1]],"stats":[90, 130, 75, 75, 75, 55],"fl":"In the forests inhabited by Ursaring, there are said to be more Berries and honey than in other forests.","evo":[216, 217, 901]},
 {"id":218,"name":"Slugma","types":["fire"],"h":7,"w":350,"exp":66,"ab":[["magma-armor", 0], ["flame-body", 1]],"stats":[40, 40, 40, 70, 40, 20],"fl":"It never stops moving. The moment it stops, it cools and hardens. Its body hardens as it ages.","evo":[218, 219]},
 {"id":219,"name":"Magcargo","types":["fire", "rock"],"h":8,"w":550,"exp":173,"ab":[["magma-armor", 0], ["flame-body", 1]],"stats":[60, 50, 120, 90, 80, 30],"fl":"Its body is made of magma. The surface is cooled and hardened but the core is still intensely hot.","evo":[218, 219]},
 {"id":220,"name":"Swinub","types":["ice", "ground"],"h":4,"w":65,"exp":50,"ab":[["oblivious", 0], ["thick-fat", 1]],"stats":[50, 50, 40, 30, 30, 50],"fl":"If it smells something enticing, it dashes off headlong to find the source of the aroma.","evo":[220, 221]},
@@ -460,10 +468,10 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":231,"name":"Phanpy","types":["ground"],"h":5,"w":335,"exp":66,"ab":[["pickup", 0], ["sand-veil", 1]],"stats":[90, 60, 60, 40, 40, 40],"fl":"Although small in stature, it is strong enough to send adults flying. It uses its nose for many things.","evo":[231, 232]},
 {"id":232,"name":"Donphan","types":["ground"],"h":11,"w":1200,"exp":175,"ab":[["sturdy", 0], ["sand-veil", 1]],"stats":[90, 120, 120, 60, 60, 50],"fl":"The longer and bigger its tusks, the higher its rank in its herd. Even baby Donphan have tusks.","evo":[231, 232]},
 {"id":233,"name":"Porygon2","types":["normal"],"h":6,"w":325,"exp":180,"ab":[["trace", 0], ["analytic", 1]],"stats":[85, 80, 90, 105, 95, 60],"fl":"Further research enhanced its abilities. Sometimes it may exhibit motions that were not programmed.","evo":[137, 233]},
-{"id":234,"name":"Stantler","types":["normal"],"h":14,"w":712,"exp":163,"ab":[["intimidate", 0], ["sap-sipper", 1]],"stats":[73, 95, 62, 85, 65, 85],"fl":"The curved antlers subtly change the flow of air to create a strange space where reality is distorted.","evo":[234]},
+{"id":234,"name":"Stantler","types":["normal"],"h":14,"w":712,"exp":163,"ab":[["intimidate", 0], ["sap-sipper", 1]],"stats":[73, 95, 62, 85, 65, 85],"fl":"The curved antlers subtly change the flow of air to create a strange space where reality is distorted.","evo":[234, 899]},
 {"id":235,"name":"Smeargle","types":["normal"],"h":12,"w":580,"exp":88,"ab":[["own-tempo", 0], ["technician", 1]],"stats":[55, 20, 35, 20, 45, 75],"fl":"It draws symbols with the fluid that oozes from the tip of its tail. 5000 symbols have been confirmed.","evo":[235]},
 {"id":236,"name":"Tyrogue","types":["fighting"],"h":7,"w":210,"exp":42,"ab":[["guts", 0], ["vital-spirit", 1]],"stats":[35, 35, 35, 35, 35, 35],"fl":"Even though it is small, it cannot be ignored because it will slug any handy target without warning.","evo":[236, 106, 107, 237]},
-{"id":237,"name":"Hitmontop","types":["fighting"],"h":14,"w":480,"exp":159,"ab":[["intimidate", 0], ["steadfast", 1]],"stats":[50, 95, 95, 35, 110, 70],"fl":"It spins on its tail to launch powerful kicks. The faster it spins, the stronger the kick.","evo":[236, 237]},
+{"id":237,"name":"Hitmontop","types":["fighting"],"h":14,"w":480,"exp":159,"ab":[["intimidate", 0], ["steadfast", 1]],"stats":[50, 95, 95, 35, 110, 70],"fl":"It spins on its tail to launch powerful kicks. The faster it spins, the stronger the kick.","evo":[236, 106, 107, 237]},
 {"id":238,"name":"Smoochum","types":["ice", "psychic"],"h":4,"w":60,"exp":61,"ab":[["oblivious", 0], ["hydration", 1]],"stats":[45, 30, 15, 85, 65, 65],"fl":"Its lips are the most sensitive part of its body. It always uses its lips first to examine things.","evo":[238, 124]},
 {"id":239,"name":"Elekid","types":["electric"],"h":6,"w":235,"exp":72,"ab":[["static", 0], ["vital-spirit", 1]],"stats":[45, 63, 37, 65, 55, 95],"fl":"It likes to spin on its head to build up electric power. It stores twice as much as an adult Electabuzz.","evo":[239, 125]},
 {"id":240,"name":"Magby","types":["fire"],"h":7,"w":214,"exp":73,"ab":[["flame-body", 0], ["vital-spirit", 1]],"stats":[45, 75, 37, 70, 55, 83],"fl":"The hotter the flame sac, the healthier the Magby. A healthy flame sac glows a bright orange.","evo":[240, 126]},
@@ -491,11 +499,11 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":262,"name":"Mightyena","types":["dark"],"h":10,"w":370,"exp":147,"ab":[["intimidate", 0], ["rattled", 1]],"stats":[70, 90, 70, 60, 60, 70],"fl":"Mightyena travel and act as a pack in the wild. The memory of its wild nature has not faded.","evo":[261, 262]},
 {"id":263,"name":"Zigzagoon","types":["normal"],"h":4,"w":175,"exp":56,"ab":[["pickup", 0], ["gluttony", 1]],"stats":[38, 30, 41, 30, 41, 60],"fl":"The hair on Zigzagoon body is bristly. It rubs the hard hair against trees to leave its territorial markings.","evo":[263, 264]},
 {"id":264,"name":"Linoone","types":["normal"],"h":5,"w":325,"exp":147,"ab":[["pickup", 0], ["gluttony", 1]],"stats":[78, 70, 61, 50, 61, 100],"fl":"When running in a straight line, it can exceed 60 mph. It has a hard time with curved roads.","evo":[263, 264]},
-{"id":265,"name":"Wurmple","types":["bug"],"h":3,"w":36,"exp":56,"ab":[["shield-dust", 0], ["run-away", 1]],"stats":[45, 45, 35, 20, 30, 20],"fl":"It uses the spikes on its rear end to repel bird Pokemon. It can withstand attacks by curling up.","evo":[265, 266, 268]},
-{"id":266,"name":"Silcoon","types":["bug"],"h":6,"w":100,"exp":72,"ab":[["shed-skin", 0]],"stats":[50, 35, 55, 25, 25, 15],"fl":"It attaches silk to tree branches and hangs itself to endure cold nights and rainy periods.","evo":[265, 266, 267]},
-{"id":267,"name":"Beautifly","types":["bug", "flying"],"h":10,"w":284,"exp":178,"ab":[["swarm", 0], ["rivalry", 1]],"stats":[60, 70, 50, 100, 50, 65],"fl":"Beautifly has a long mouth like a coiled needle. It uses this to drain other flowers of pollen.","evo":[265, 266, 267]},
-{"id":268,"name":"Cascoon","types":["bug"],"h":7,"w":115,"exp":72,"ab":[["shed-skin", 0]],"stats":[50, 35, 55, 25, 25, 15],"fl":"It waits quietly until it has evolved. It allows opponents to hit it but endures such attacks with patience.","evo":[265, 268, 269]},
-{"id":269,"name":"Dustox","types":["bug", "poison"],"h":12,"w":316,"exp":173,"ab":[["shield-dust", 0], ["compound-eyes", 1]],"stats":[60, 50, 70, 50, 90, 65],"fl":"Dustox is instinctively drawn to light. Swarms of this Pokemon are attracted by the bright lights of cities.","evo":[265, 268, 269]},
+{"id":265,"name":"Wurmple","types":["bug"],"h":3,"w":36,"exp":56,"ab":[["shield-dust", 0], ["run-away", 1]],"stats":[45, 45, 35, 20, 30, 20],"fl":"It uses the spikes on its rear end to repel bird Pokemon. It can withstand attacks by curling up.","evo":[265, 266, 267, 268, 269]},
+{"id":266,"name":"Silcoon","types":["bug"],"h":6,"w":100,"exp":72,"ab":[["shed-skin", 0]],"stats":[50, 35, 55, 25, 25, 15],"fl":"It attaches silk to tree branches and hangs itself to endure cold nights and rainy periods.","evo":[265, 266, 267, 268, 269]},
+{"id":267,"name":"Beautifly","types":["bug", "flying"],"h":10,"w":284,"exp":178,"ab":[["swarm", 0], ["rivalry", 1]],"stats":[60, 70, 50, 100, 50, 65],"fl":"Beautifly has a long mouth like a coiled needle. It uses this to drain other flowers of pollen.","evo":[265, 266, 267, 268, 269]},
+{"id":268,"name":"Cascoon","types":["bug"],"h":7,"w":115,"exp":72,"ab":[["shed-skin", 0]],"stats":[50, 35, 55, 25, 25, 15],"fl":"It waits quietly until it has evolved. It allows opponents to hit it but endures such attacks with patience.","evo":[265, 266, 267, 268, 269]},
+{"id":269,"name":"Dustox","types":["bug", "poison"],"h":12,"w":316,"exp":173,"ab":[["shield-dust", 0], ["compound-eyes", 1]],"stats":[60, 50, 70, 50, 90, 65],"fl":"Dustox is instinctively drawn to light. Swarms of this Pokemon are attracted by the bright lights of cities.","evo":[265, 266, 267, 268, 269]},
 {"id":270,"name":"Lotad","types":["water", "grass"],"h":5,"w":26,"exp":44,"ab":[["swift-swim", 0], ["rain-dish", 1]],"stats":[40, 30, 30, 40, 50, 30],"fl":"Lotad live in ponds and lakes where the water is clean. They serve as ferries for smaller Pokemon.","evo":[270, 271, 272]},
 {"id":271,"name":"Lombre","types":["water", "grass"],"h":12,"w":325,"exp":119,"ab":[["swift-swim", 0], ["rain-dish", 1]],"stats":[60, 50, 50, 60, 70, 50],"fl":"Lombre is nocturnal. It comes out while everyone else is sleeping and eats aquatic moss.","evo":[270, 271, 272]},
 {"id":272,"name":"Ludicolo","types":["water", "grass"],"h":15,"w":535,"exp":216,"ab":[["swift-swim", 0], ["rain-dish", 1]],"stats":[80, 70, 70, 90, 100, 70],"fl":"Upon hearing festive music, Ludicolo cannot help breaking out into a dance.","evo":[270, 271, 272]},
@@ -506,9 +514,9 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":277,"name":"Swellow","types":["normal", "flying"],"h":7,"w":198,"exp":159,"ab":[["guts", 0], ["scrappy", 1]],"stats":[60, 85, 60, 75, 50, 125],"fl":"Swellow flies in a perfectly straight line through the sky at great speed.","evo":[276, 277]},
 {"id":278,"name":"Wingull","types":["water", "flying"],"h":6,"w":95,"exp":54,"ab":[["keen-eye", 0], ["rain-dish", 1]],"stats":[40, 30, 30, 55, 30, 85],"fl":"Wingull has the habit of carrying prey and valuables in its beak and hiding them away.","evo":[278, 279]},
 {"id":279,"name":"Pelipper","types":["water", "flying"],"h":12,"w":280,"exp":154,"ab":[["keen-eye", 0], ["drizzle", 1]],"stats":[60, 50, 100, 95, 70, 65],"fl":"Pelipper is a flying transporter that carries small Pokemon and eggs inside its massive bill.","evo":[278, 279]},
-{"id":280,"name":"Ralts","types":["psychic", "fairy"],"h":4,"w":66,"exp":40,"ab":[["synchronize", 0], ["trace", 1]],"stats":[28, 25, 25, 45, 35, 40],"fl":"Ralts senses the emotions of people using the horns on its head. It rarely appears before people.","evo":[280, 281, 282]},
-{"id":281,"name":"Kirlia","types":["psychic", "fairy"],"h":8,"w":202,"exp":97,"ab":[["synchronize", 0], ["trace", 1]],"stats":[38, 35, 35, 65, 55, 50],"fl":"It is said that a Kirlia exposed to the positive emotions of its Trainer grows beautiful.","evo":[280, 281, 282]},
-{"id":282,"name":"Gardevoir","types":["psychic", "fairy"],"h":16,"w":484,"exp":233,"ab":[["synchronize", 0], ["trace", 1]],"stats":[68, 65, 65, 125, 115, 80],"fl":"Gardevoir has the ability to predict the future. If its Trainer is in danger, it will unleash its psychokinetic energy.","evo":[280, 281, 282]},
+{"id":280,"name":"Ralts","types":["psychic", "fairy"],"h":4,"w":66,"exp":40,"ab":[["synchronize", 0], ["trace", 1]],"stats":[28, 25, 25, 45, 35, 40],"fl":"Ralts senses the emotions of people using the horns on its head. It rarely appears before people.","evo":[280, 281, 282, 475]},
+{"id":281,"name":"Kirlia","types":["psychic", "fairy"],"h":8,"w":202,"exp":97,"ab":[["synchronize", 0], ["trace", 1]],"stats":[38, 35, 35, 65, 55, 50],"fl":"It is said that a Kirlia exposed to the positive emotions of its Trainer grows beautiful.","evo":[280, 281, 282, 475]},
+{"id":282,"name":"Gardevoir","types":["psychic", "fairy"],"h":16,"w":484,"exp":233,"ab":[["synchronize", 0], ["trace", 1]],"stats":[68, 65, 65, 125, 115, 80],"fl":"Gardevoir has the ability to predict the future. If its Trainer is in danger, it will unleash its psychokinetic energy.","evo":[280, 281, 282, 475]},
 {"id":283,"name":"Surskit","types":["bug", "water"],"h":5,"w":17,"exp":54,"ab":[["swift-swim", 0]],"stats":[40, 30, 32, 50, 52, 65],"fl":"Surskit can walk on water as if it were skating. It feeds on microscopic organisms in ponds and streams.","evo":[283, 284]},
 {"id":284,"name":"Masquerain","types":["bug", "flying"],"h":8,"w":36,"exp":159,"ab":[["intimidate", 0], ["unnerve", 1]],"stats":[70, 60, 62, 80, 82, 60],"fl":"Masquerain intimidates enemies with the eyeball patterns on its antennae. It preys on weak Pokemon.","evo":[283, 284]},
 {"id":285,"name":"Shroomish","types":["grass"],"h":4,"w":45,"exp":59,"ab":[["effect-spore", 0], ["quick-feet", 1]],"stats":[60, 40, 60, 40, 60, 35],"fl":"Shroomish live in damp soil in the depths of forests. They grow by absorbing composted humus.","evo":[285, 286]},
@@ -517,8 +525,8 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":288,"name":"Vigoroth","types":["normal"],"h":14,"w":465,"exp":154,"ab":[["vital-spirit", 0]],"stats":[80, 80, 80, 55, 55, 90],"fl":"Vigoroth is always itching and agitated to go on a wild rampage. It simply cannot endure sitting still.","evo":[287, 288, 289]},
 {"id":289,"name":"Slaking","types":["normal"],"h":20,"w":1305,"exp":252,"ab":[["truant", 0]],"stats":[150, 160, 100, 95, 65, 100],"fl":"Slaking lolls around all day. It is the world most slothful Pokemon. However when tormented it roars.","evo":[287, 288, 289]},
 {"id":290,"name":"Nincada","types":["bug", "ground"],"h":5,"w":55,"exp":53,"ab":[["compound-eyes", 0], ["run-away", 1]],"stats":[31, 45, 90, 30, 30, 40],"fl":"Because Nincada lives underground, it has no eyes. It uses its sharp claws to carve the roots of trees.","evo":[290, 291, 292]},
-{"id":291,"name":"Ninjask","types":["bug", "flying"],"h":8,"w":120,"exp":160,"ab":[["speed-boost", 0], ["infiltrator", 1]],"stats":[61, 90, 45, 50, 50, 160],"fl":"Ninjask moves so quickly that it is almost invisible. It releases a high-pitched cry that sounds painful.","evo":[290, 291]},
-{"id":292,"name":"Shedinja","types":["bug", "ghost"],"h":8,"w":12,"exp":83,"ab":[["wonder-guard", 0]],"stats":[1, 90, 45, 30, 30, 40],"fl":"Shedinja is a peculiar Pokemon. It seems to appear unsought in a Poke Ball after a Ninjask evolves.","evo":[290, 292]},
+{"id":291,"name":"Ninjask","types":["bug", "flying"],"h":8,"w":120,"exp":160,"ab":[["speed-boost", 0], ["infiltrator", 1]],"stats":[61, 90, 45, 50, 50, 160],"fl":"Ninjask moves so quickly that it is almost invisible. It releases a high-pitched cry that sounds painful.","evo":[290, 291, 292]},
+{"id":292,"name":"Shedinja","types":["bug", "ghost"],"h":8,"w":12,"exp":83,"ab":[["wonder-guard", 0]],"stats":[1, 90, 45, 30, 30, 40],"fl":"Shedinja is a peculiar Pokemon. It seems to appear unsought in a Poke Ball after a Ninjask evolves.","evo":[290, 291, 292]},
 {"id":293,"name":"Whismur","types":["normal"],"h":6,"w":163,"exp":47,"ab":[["soundproof", 0], ["rattled", 1]],"stats":[64, 51, 23, 51, 23, 28],"fl":"Whismur is very timid. If it starts to cry loudly, it becomes startled by its own crying and cries even harder.","evo":[293, 294, 295]},
 {"id":294,"name":"Loudred","types":["normal"],"h":10,"w":405,"exp":103,"ab":[["soundproof", 0], ["scrappy", 1]],"stats":[84, 71, 43, 71, 43, 48],"fl":"Loudred stomps its feet to amplify its voice. It can knock over a wooden house with its thunderous roar.","evo":[293, 294, 295]},
 {"id":295,"name":"Exploud","types":["normal"],"h":15,"w":840,"exp":208,"ab":[["soundproof", 0], ["scrappy", 1]],"stats":[104, 91, 63, 91, 63, 68],"fl":"Exploud triggers earthquakes with the tremors it creates by bellowing. It can be heard from 6 miles away.","evo":[293, 294, 295]},
@@ -587,14 +595,14 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":358,"name":"Chimecho","types":["psychic"],"h":6,"w":10,"exp":159,"ab":[["levitate", 0]],"stats":[65, 50, 70, 95, 80, 65],"fl":"Chimecho makes a variety of sounds using the gas inside its body. It latches onto trees with its sucker.","evo":[433, 358]},
 {"id":359,"name":"Absol","types":["dark"],"h":12,"w":470,"exp":163,"ab":[["pressure", 0], ["super-luck", 1]],"stats":[65, 130, 60, 75, 60, 75],"fl":"Absol has the ability to foretell the coming of natural disasters. It lives in a harsh rugged mountain environment.","evo":[359]},
 {"id":360,"name":"Wynaut","types":["psychic"],"h":6,"w":140,"exp":52,"ab":[["shadow-tag", 0], ["telepathy", 1]],"stats":[95, 23, 48, 23, 48, 23],"fl":"Wynaut always travel in groups. They prefer to live at the foot of mountains where berries are plentiful.","evo":[360, 202]},
-{"id":361,"name":"Snorunt","types":["ice"],"h":7,"w":168,"exp":60,"ab":[["inner-focus", 0], ["ice-body", 1]],"stats":[50, 50, 50, 50, 50, 50],"fl":"Snorunt can survive in environments as cold as negative 150 degrees. It lives in cold snowy areas.","evo":[361, 362]},
-{"id":362,"name":"Glalie","types":["ice"],"h":15,"w":2565,"exp":168,"ab":[["inner-focus", 0], ["ice-body", 1]],"stats":[80, 80, 80, 80, 80, 80],"fl":"Glalie has the ability to freeze moisture in the atmosphere. It creates walls of ice to trap its prey.","evo":[361, 362]},
+{"id":361,"name":"Snorunt","types":["ice"],"h":7,"w":168,"exp":60,"ab":[["inner-focus", 0], ["ice-body", 1]],"stats":[50, 50, 50, 50, 50, 50],"fl":"Snorunt can survive in environments as cold as negative 150 degrees. It lives in cold snowy areas.","evo":[361, 362, 478]},
+{"id":362,"name":"Glalie","types":["ice"],"h":15,"w":2565,"exp":168,"ab":[["inner-focus", 0], ["ice-body", 1]],"stats":[80, 80, 80, 80, 80, 80],"fl":"Glalie has the ability to freeze moisture in the atmosphere. It creates walls of ice to trap its prey.","evo":[361, 362, 478]},
 {"id":363,"name":"Spheal","types":["ice", "water"],"h":8,"w":395,"exp":58,"ab":[["thick-fat", 0], ["ice-body", 1]],"stats":[70, 40, 50, 55, 50, 25],"fl":"Spheal always travels by rolling. When it is happy it claps its flippers and rolls about to express its joy.","evo":[363, 364, 365]},
 {"id":364,"name":"Sealeo","types":["ice", "water"],"h":11,"w":876,"exp":144,"ab":[["thick-fat", 0], ["ice-body", 1]],"stats":[90, 60, 70, 75, 70, 45],"fl":"Sealeo has the habit of spinning things on its nose. It has a fine nose that can distinguish many aromas.","evo":[363, 364, 365]},
 {"id":365,"name":"Walrein","types":["ice", "water"],"h":14,"w":1506,"exp":239,"ab":[["thick-fat", 0], ["ice-body", 1]],"stats":[110, 80, 90, 95, 90, 65],"fl":"Walrein swims around in frigid seawater. Its two massive tusks can crush blocks of ice in a single blow.","evo":[363, 364, 365]},
 {"id":366,"name":"Clamperl","types":["water"],"h":4,"w":525,"exp":69,"ab":[["shell-armor", 0], ["rattled", 1]],"stats":[35, 64, 85, 74, 55, 32],"fl":"Clamperl grows by adding to its shell. Pearls found in Clamperl are said to be precious and beautiful.","evo":[366, 367, 368]},
-{"id":367,"name":"Huntail","types":["water"],"h":17,"w":270,"exp":170,"ab":[["swift-swim", 0], ["water-veil", 1]],"stats":[55, 104, 105, 94, 75, 52],"fl":"Huntail lives in the deep sea where little light reaches. Its large eyes are adapted to the darkness.","evo":[366, 367]},
-{"id":368,"name":"Gorebyss","types":["water"],"h":18,"w":226,"exp":170,"ab":[["swift-swim", 0], ["hydration", 1]],"stats":[55, 84, 105, 114, 75, 52],"fl":"Gorebyss is the very picture of elegance and beauty. However it feeds by sucking fluids out of prey.","evo":[366, 368]},
+{"id":367,"name":"Huntail","types":["water"],"h":17,"w":270,"exp":170,"ab":[["swift-swim", 0], ["water-veil", 1]],"stats":[55, 104, 105, 94, 75, 52],"fl":"Huntail lives in the deep sea where little light reaches. Its large eyes are adapted to the darkness.","evo":[366, 367, 368]},
+{"id":368,"name":"Gorebyss","types":["water"],"h":18,"w":226,"exp":170,"ab":[["swift-swim", 0], ["hydration", 1]],"stats":[55, 84, 105, 114, 75, 52],"fl":"Gorebyss is the very picture of elegance and beauty. However it feeds by sucking fluids out of prey.","evo":[366, 367, 368]},
 {"id":369,"name":"Relicanth","types":["water", "rock"],"h":10,"w":234,"exp":170,"ab":[["swift-swim", 0], ["rock-head", 1]],"stats":[100, 90, 130, 45, 65, 55],"fl":"Relicanth is a species that has existed for 100 million years without ever changing its form.","evo":[369]},
 {"id":370,"name":"Luvdisc","types":["water"],"h":6,"w":87,"exp":116,"ab":[["swift-swim", 0], ["hydration", 1]],"stats":[43, 30, 55, 40, 65, 97],"fl":"Luvdisc live in shallow seas in the tropics. Its heart-shaped body is a symbol of love.","evo":[370]},
 {"id":371,"name":"Bagon","types":["dragon"],"h":6,"w":421,"exp":60,"ab":[["rock-head", 0], ["sheer-force", 1]],"stats":[45, 75, 60, 40, 30, 50],"fl":"Bagon has a dream of one day soaring in the sky. In doomed efforts to fly it hurls itself off cliffs.","evo":[371, 372, 373]},
@@ -639,8 +647,8 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":410,"name":"Shieldon","types":["rock", "steel"],"h":5,"w":570,"exp":70,"ab":[["sturdy", 0], ["soundproof", 1]],"stats":[30, 42, 118, 42, 88, 30],"fl":"A Pokemon that lived in jungles 100 million years ago. Its back face is harder than steel.","evo":[410, 411]},
 {"id":411,"name":"Bastiodon","types":["rock", "steel"],"h":13,"w":1495,"exp":173,"ab":[["sturdy", 0], ["soundproof", 1]],"stats":[60, 52, 168, 47, 138, 30],"fl":"Any frontal attack is repulsed. It is a stone wall that nothing can overcome.","evo":[410, 411]},
 {"id":412,"name":"Burmy","types":["bug"],"h":2,"w":34,"exp":45,"ab":[["shed-skin", 0]],"stats":[40, 29, 45, 29, 45, 36],"fl":"To shelter itself from cold, wintry winds, it covers itself with a cloak made of twigs and leaves.","evo":[412, 413, 414]},
-{"id":413,"name":"Wormadam","types":["bug", "grass"],"h":5,"w":65,"exp":148,"ab":[["anticipation", 0], ["overcoat", 1]],"stats":[60, 59, 85, 79, 105, 36],"fl":"When Burmy evolved, its body absorbed the cloak it was wearing. The cloak became part of its body.","evo":[412, 413]},
-{"id":414,"name":"Mothim","types":["bug", "flying"],"h":9,"w":233,"exp":148,"ab":[["swarm", 0], ["tinted-lens", 1]],"stats":[70, 94, 50, 94, 50, 66],"fl":"It flutters around at night and steals honey from Combee. It never makes its own honey.","evo":[412, 414]},
+{"id":413,"name":"Wormadam","types":["bug", "grass"],"h":5,"w":65,"exp":148,"ab":[["anticipation", 0], ["overcoat", 1]],"stats":[60, 59, 85, 79, 105, 36],"fl":"When Burmy evolved, its body absorbed the cloak it was wearing. The cloak became part of its body.","evo":[412, 413, 414]},
+{"id":414,"name":"Mothim","types":["bug", "flying"],"h":9,"w":233,"exp":148,"ab":[["swarm", 0], ["tinted-lens", 1]],"stats":[70, 94, 50, 94, 50, 66],"fl":"It flutters around at night and steals honey from Combee. It never makes its own honey.","evo":[412, 413, 414]},
 {"id":415,"name":"Combee","types":["bug", "flying"],"h":3,"w":55,"exp":49,"ab":[["honey-gather", 0], ["hustle", 1]],"stats":[30, 30, 42, 30, 42, 70],"fl":"It collects and delivers honey to Vespiquen. At night, they form a swarm of three to sleep.","evo":[415, 416]},
 {"id":416,"name":"Vespiquen","types":["bug", "flying"],"h":12,"w":385,"exp":166,"ab":[["pressure", 0], ["unnerve", 1]],"stats":[70, 80, 102, 80, 102, 40],"fl":"It houses its colony in cells in its body and releases various pheromones to control them.","evo":[415, 416]},
 {"id":417,"name":"Pachirisu","types":["electric"],"h":4,"w":39,"exp":142,"ab":[["run-away", 0], ["volt-absorb", 1]],"stats":[60, 45, 70, 45, 90, 95],"fl":"It makes fur balls that crackle with static electricity. It stores them with berries in tree holes.","evo":[417]},
@@ -687,7 +695,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":458,"name":"Mantyke","types":["water", "flying"],"h":10,"w":650,"exp":69,"ab":[["swift-swim", 0], ["water-absorb", 1]],"stats":[45, 20, 50, 60, 120, 50],"fl":"It swims along with Remoraid, which clings to its underside to scavenge leftovers.","evo":[458, 226]},
 {"id":459,"name":"Snover","types":["grass", "ice"],"h":10,"w":505,"exp":67,"ab":[["snow-warning", 0], ["soundproof", 1]],"stats":[60, 62, 50, 62, 60, 40],"fl":"During cold seasons, it migrates to the mountain's lower reaches. It returns to snow-capped peaks in spring.","evo":[459, 460]},
 {"id":460,"name":"Abomasnow","types":["grass", "ice"],"h":22,"w":1355,"exp":173,"ab":[["snow-warning", 0], ["soundproof", 1]],"stats":[90, 92, 75, 92, 85, 60],"fl":"It lives on snowy mountains. It created Blizzard conditions to hide itself and the Snover it protects.","evo":[459, 460]},
-{"id":461,"name":"Weavile","types":["dark", "ice"],"h":11,"w":340,"exp":179,"ab":[["pressure", 0], ["pickpocket", 1]],"stats":[70, 120, 65, 45, 85, 125],"fl":"They communicate by leaving scratches on trees or ice. They work in groups to surround enemies.","evo":[215, 461]},
+{"id":461,"name":"Weavile","types":["dark", "ice"],"h":11,"w":340,"exp":179,"ab":[["pressure", 0], ["pickpocket", 1]],"stats":[70, 120, 65, 45, 85, 125],"fl":"They communicate by leaving scratches on trees or ice. They work in groups to surround enemies.","evo":[215, 461, 903]},
 {"id":462,"name":"Magnezone","types":["electric", "steel"],"h":12,"w":1800,"exp":241,"ab":[["magnet-pull", 0], ["analytic", 1]],"stats":[70, 70, 115, 130, 90, 60],"fl":"It evolved from exposure to a special magnetic field. Three units generate magnetism.","evo":[81, 82, 462]},
 {"id":463,"name":"Lickilicky","types":["normal"],"h":17,"w":1400,"exp":180,"ab":[["own-tempo", 0], ["oblivious", 1]],"stats":[110, 85, 95, 80, 95, 50],"fl":"It wraps its long tongue around prey to immobilize it before swallowing it.","evo":[108, 463]},
 {"id":464,"name":"Rhyperior","types":["ground", "rock"],"h":24,"w":2828,"exp":241,"ab":[["lightning-rod", 0], ["reckless", 1]],"stats":[115, 140, 130, 55, 55, 40],"fl":"It puts hard rocks in holes in its palms and fires them. Geodude are used as ammunition.","evo":[111, 112, 464]},
@@ -696,15 +704,15 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":467,"name":"Magmortar","types":["fire"],"h":16,"w":680,"exp":243,"ab":[["flame-body", 0], ["vital-spirit", 1]],"stats":[75, 95, 67, 125, 95, 83],"fl":"It prefers to battle by firing balls of fire from the ends of its arms. It launches them at blazing speed.","evo":[240, 126, 467]},
 {"id":468,"name":"Togekiss","types":["fairy", "flying"],"h":15,"w":380,"exp":245,"ab":[["hustle", 0], ["serene-grace", 1]],"stats":[85, 50, 95, 120, 115, 80],"fl":"It shares many blessings with people who respect each other's rights and avoid needless strife.","evo":[175, 176, 468]},
 {"id":469,"name":"Yanmega","types":["bug", "flying"],"h":19,"w":515,"exp":180,"ab":[["speed-boost", 0], ["tinted-lens", 1]],"stats":[86, 76, 86, 116, 56, 95],"fl":"By churning its wings, it creates shock waves that will shatter boulders in the area.","evo":[193, 469]},
-{"id":470,"name":"Leafeon","types":["grass"],"h":10,"w":255,"exp":184,"ab":[["leaf-guard", 0], ["chlorophyll", 1]],"stats":[65, 110, 130, 60, 65, 95],"fl":"When you see Leafeon asleep in a patch of sunshine, you might think it is a plant.","evo":[133, 470]},
-{"id":471,"name":"Glaceon","types":["ice"],"h":8,"w":259,"exp":184,"ab":[["snow-cloak", 0], ["ice-body", 1]],"stats":[65, 60, 110, 130, 95, 65],"fl":"It can lower the temperature of the air around it. It freezes its own fur and shoots the crystals.","evo":[133, 471]},
+{"id":470,"name":"Leafeon","types":["grass"],"h":10,"w":255,"exp":184,"ab":[["leaf-guard", 0], ["chlorophyll", 1]],"stats":[65, 110, 130, 60, 65, 95],"fl":"When you see Leafeon asleep in a patch of sunshine, you might think it is a plant.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
+{"id":471,"name":"Glaceon","types":["ice"],"h":8,"w":259,"exp":184,"ab":[["snow-cloak", 0], ["ice-body", 1]],"stats":[65, 60, 110, 130, 95, 65],"fl":"It can lower the temperature of the air around it. It freezes its own fur and shoots the crystals.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
 {"id":472,"name":"Gliscor","types":["ground", "flying"],"h":20,"w":425,"exp":179,"ab":[["hyper-cutter", 0], ["sand-veil", 1]],"stats":[75, 95, 125, 45, 75, 95],"fl":"It flies silently and stealthily. It hangs on to its prey and injects venom into the prey's body.","evo":[207, 472]},
 {"id":473,"name":"Mamoswine","types":["ice", "ground"],"h":25,"w":2910,"exp":239,"ab":[["oblivious", 0], ["thick-fat", 1]],"stats":[110, 130, 80, 70, 60, 80],"fl":"A frozen Mamoswine was dug up from old ice. It perished in the ice age according to the news.","evo":[220, 221, 473]},
 {"id":474,"name":"Porygon-Z","types":["normal"],"h":9,"w":340,"exp":241,"ab":[["adaptability", 0], ["analytic", 1]],"stats":[85, 80, 70, 135, 75, 90],"fl":"Additional software was installed to make it a better Pokemon. But it began acting strange.","evo":[137, 233, 474]},
-{"id":475,"name":"Gallade","types":["psychic", "fighting"],"h":16,"w":520,"exp":233,"ab":[["steadfast", 0], ["justified", 1]],"stats":[68, 125, 65, 65, 115, 80],"fl":"A master of courtesy and swordsmanship, it fights using extending swords on its elbows.","evo":[280, 281, 475]},
+{"id":475,"name":"Gallade","types":["psychic", "fighting"],"h":16,"w":520,"exp":233,"ab":[["steadfast", 0], ["justified", 1]],"stats":[68, 125, 65, 65, 115, 80],"fl":"A master of courtesy and swordsmanship, it fights using extending swords on its elbows.","evo":[280, 281, 282, 475]},
 {"id":476,"name":"Probopass","types":["rock", "steel"],"h":14,"w":3400,"exp":175,"ab":[["magnet-pull", 0], ["sand-force", 1]],"stats":[60, 55, 145, 75, 150, 40],"fl":"It freely controls three small units called Mini-Noses using magnetic force.","evo":[299, 476]},
 {"id":477,"name":"Dusknoir","types":["ghost"],"h":22,"w":1066,"exp":179,"ab":[["pressure", 0], ["frisk", 1]],"stats":[45, 100, 135, 65, 135, 45],"fl":"The antenna on its head captures radio waves from the world of spirits that command it to take people there.","evo":[355, 356, 477]},
-{"id":478,"name":"Froslass","types":["ice", "ghost"],"h":13,"w":267,"exp":168,"ab":[["snow-cloak", 0], ["cursed-body", 1]],"stats":[70, 80, 70, 80, 70, 110],"fl":"It freezes foes with an icy breath nearly minus 60 degrees Fahrenheit. What seems to be its body is actually an ice chunk.","evo":[361, 478]},
+{"id":478,"name":"Froslass","types":["ice", "ghost"],"h":13,"w":267,"exp":168,"ab":[["snow-cloak", 0], ["cursed-body", 1]],"stats":[70, 80, 70, 80, 70, 110],"fl":"It freezes foes with an icy breath nearly minus 60 degrees Fahrenheit. What seems to be its body is actually an ice chunk.","evo":[361, 362, 478]},
 {"id":479,"name":"Rotom","types":["electric", "ghost"],"h":3,"w":3,"exp":154,"ab":[["levitate", 0]],"stats":[50, 50, 77, 95, 77, 91],"fl":"Its body is composed of plasma. It is known to infiltrate electronic devices and wreak havoc.","evo":[479]},
 {"id":480,"name":"Uxie","types":["psychic"],"h":3,"w":3,"exp":261,"ab":[["levitate", 0]],"stats":[75, 75, 130, 75, 130, 95],"fl":"The being that created all knowledge. It is said that those who see its eyes have all memories erased.","evo":[480]},
 {"id":481,"name":"Mesprit","types":["psychic"],"h":3,"w":3,"exp":261,"ab":[["levitate", 0]],"stats":[80, 105, 105, 105, 105, 50],"fl":"The being that created all emotion. It taught humans the nobility of sorrow, pain, and joy.","evo":[481]},
@@ -776,7 +784,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":547,"name":"Whimsicott","types":["grass", "fairy"],"h":7,"w":66,"exp":168,"ab":[["prankster", 0], ["infiltrator", 1]],"stats":[60, 67, 85, 77, 75, 116],"fl":"It rides on winds and slips through gaps into the homes of people. It loves pranks.","evo":[546, 547]},
 {"id":548,"name":"Petilil","types":["grass"],"h":5,"w":66,"exp":56,"ab":[["chlorophyll", 0], ["leaf-guard", 1]],"stats":[45, 35, 50, 70, 50, 30],"fl":"The leaves on its head are very bitter. Chewing on a leaf perks you right up.","evo":[548, 549]},
 {"id":549,"name":"Lilligant","types":["grass"],"h":11,"w":163,"exp":168,"ab":[["chlorophyll", 0], ["leaf-guard", 1]],"stats":[70, 60, 75, 110, 75, 90],"fl":"The fragrant aroma of the garland on its head has a relaxing effect.","evo":[548, 549]},
-{"id":550,"name":"Basculin","types":["water"],"h":10,"w":180,"exp":161,"ab":[["reckless", 0], ["rock-head", 1]],"stats":[70, 92, 65, 80, 55, 98],"fl":"Red and blue Basculin are very violent and always fighting. They are also remarkably tasty.","evo":[550]},
+{"id":550,"name":"Basculin","types":["water"],"h":10,"w":180,"exp":161,"ab":[["reckless", 0], ["rock-head", 1]],"stats":[70, 92, 65, 80, 55, 98],"fl":"Red and blue Basculin are very violent and always fighting. They are also remarkably tasty.","evo":[550, 902]},
 {"id":551,"name":"Sandile","types":["ground", "dark"],"h":7,"w":152,"exp":58,"ab":[["intimidate", 0], ["moxie", 1]],"stats":[50, 72, 35, 35, 35, 65],"fl":"They live buried in the sands of the desert. The sands protect them from harsh sunlight.","evo":[551, 552, 553]},
 {"id":552,"name":"Krokorok","types":["ground", "dark"],"h":10,"w":334,"exp":123,"ab":[["intimidate", 0], ["moxie", 1]],"stats":[60, 82, 45, 45, 45, 74],"fl":"The special membrane covering its eyes can detect heat so it can see in the dark.","evo":[551, 552, 553]},
 {"id":553,"name":"Krookodile","types":["ground", "dark"],"h":15,"w":963,"exp":217,"ab":[["intimidate", 0], ["moxie", 1]],"stats":[95, 117, 80, 65, 70, 92],"fl":"They can chomp through heavy plates of iron. They never allow prey to escape.","evo":[551, 552, 553]},
@@ -926,7 +934,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":697,"name":"Tyrantrum","types":["rock", "dragon"],"h":25,"w":2700,"exp":182,"ab":[["strong-jaw", 0], ["rock-head", 1]],"stats":[82, 121, 119, 69, 59, 71],"fl":"Thanks to its overwhelmingly powerful jaws it could bite through anything. It reigned supreme.","evo":[696, 697]},
 {"id":698,"name":"Amaura","types":["rock", "ice"],"h":13,"w":252,"exp":72,"ab":[["refrigerate", 0], ["snow-warning", 1]],"stats":[77, 59, 50, 67, 63, 46],"fl":"This Pokemon was restored from part of its body that had been preserved in ice for 100 million years.","evo":[698, 699]},
 {"id":699,"name":"Aurorus","types":["rock", "ice"],"h":27,"w":2250,"exp":184,"ab":[["refrigerate", 0], ["snow-warning", 1]],"stats":[123, 77, 72, 99, 92, 58],"fl":"The glittering, aurora-like patterns on its body can cause opponents to become confused.","evo":[698, 699]},
-{"id":700,"name":"Sylveon","types":["fairy"],"h":10,"w":235,"exp":184,"ab":[["cute-charm", 0], ["pixilate", 1]],"stats":[95, 65, 65, 110, 130, 60],"fl":"It wraps its ribbony feelers around the arm of its beloved Trainer and walks together.","evo":[133, 700]},
+{"id":700,"name":"Sylveon","types":["fairy"],"h":10,"w":235,"exp":184,"ab":[["cute-charm", 0], ["pixilate", 1]],"stats":[95, 65, 65, 110, 130, 60],"fl":"It wraps its ribbony feelers around the arm of its beloved Trainer and walks together.","evo":[133, 134, 135, 136, 196, 197, 470, 471, 700]},
 {"id":701,"name":"Hawlucha","types":["fighting", "flying"],"h":8,"w":215,"exp":175,"ab":[["limber", 0], ["unburden", 1]],"stats":[78, 92, 75, 74, 63, 118],"fl":"Although its body is small it can overwhelm much larger opponents thanks to its technique.","evo":[701]},
 {"id":702,"name":"Dedenne","types":["electric", "fairy"],"h":2,"w":22,"exp":151,"ab":[["cheek-pouch", 0], ["pickup", 1]],"stats":[67, 58, 57, 81, 67, 101],"fl":"It uses its whiskers like antennas to send and receive electrical signals. It uses the electricity from outlets.","evo":[702]},
 {"id":703,"name":"Carbink","types":["rock", "fairy"],"h":3,"w":57,"exp":100,"ab":[["clear-body", 0], ["sturdy", 1]],"stats":[50, 50, 150, 50, 150, 50],"fl":"Born from the magma and minerals underground millions of years ago its body shines like a diamond.","evo":[703]},
@@ -1015,10 +1023,10 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":786,"name":"Tapu Lele","types":["psychic", "fairy"],"h":12,"w":186,"exp":257,"ab":[["psychic-surge", 0]],"stats":[70, 85, 75, 130, 115, 95],"fl":"This guardian deity of Akala is uncaring and thoughtless but it has been said that people's wounds heal.","evo":[786]},
 {"id":787,"name":"Tapu Bulu","types":["grass", "fairy"],"h":19,"w":455,"exp":257,"ab":[["grassy-surge", 0]],"stats":[70, 130, 115, 85, 95, 75],"fl":"This guardian deity of Ula-ula rarely moves but when it does to attack it unleashes tremendous power.","evo":[787]},
 {"id":788,"name":"Tapu Fini","types":["water", "fairy"],"h":13,"w":212,"exp":257,"ab":[["misty-surge", 0]],"stats":[70, 75, 115, 95, 130, 85],"fl":"This guardian deity of Poni can control water. It confounds its enemies using the dense fog it creates.","evo":[788]},
-{"id":789,"name":"Cosmog","types":["psychic"],"h":2,"w":1,"exp":40,"ab":[["unaware", 0]],"stats":[43, 29, 31, 29, 31, 37],"fl":"In ages past it was called the child of the stars. It is said to warp space with its own power.","evo":[789, 790, 791]},
-{"id":790,"name":"Cosmoem","types":["psychic"],"h":1,"w":9999,"exp":140,"ab":[["sturdy", 0]],"stats":[43, 29, 131, 29, 131, 37],"fl":"Long ago people called it the cocoon of the stars. Its body is as hard as any material.","evo":[789, 790, 791]},
-{"id":791,"name":"Solgaleo","types":["psychic", "steel"],"h":34,"w":2300,"exp":306,"ab":[["full-metal-body", 0]],"stats":[137, 137, 107, 113, 89, 97],"fl":"It is called the beast that devours the sun. It radiates a powerful light.","evo":[789, 790, 791]},
-{"id":792,"name":"Lunala","types":["psychic", "ghost"],"h":40,"w":1200,"exp":306,"ab":[["shadow-shield", 0]],"stats":[137, 113, 89, 137, 107, 97],"fl":"It is called the beast that calls the moon. It draws moonlight in the huge wings on its body.","evo":[789, 790, 792]},
+{"id":789,"name":"Cosmog","types":["psychic"],"h":2,"w":1,"exp":40,"ab":[["unaware", 0]],"stats":[43, 29, 31, 29, 31, 37],"fl":"In ages past it was called the child of the stars. It is said to warp space with its own power.","evo":[789, 790, 791, 792]},
+{"id":790,"name":"Cosmoem","types":["psychic"],"h":1,"w":9999,"exp":140,"ab":[["sturdy", 0]],"stats":[43, 29, 131, 29, 131, 37],"fl":"Long ago people called it the cocoon of the stars. Its body is as hard as any material.","evo":[789, 790, 791, 792]},
+{"id":791,"name":"Solgaleo","types":["psychic", "steel"],"h":34,"w":2300,"exp":306,"ab":[["full-metal-body", 0]],"stats":[137, 137, 107, 113, 89, 97],"fl":"It is called the beast that devours the sun. It radiates a powerful light.","evo":[789, 790, 791, 792]},
+{"id":792,"name":"Lunala","types":["psychic", "ghost"],"h":40,"w":1200,"exp":306,"ab":[["shadow-shield", 0]],"stats":[137, 113, 89, 137, 107, 97],"fl":"It is called the beast that calls the moon. It draws moonlight in the huge wings on its body.","evo":[789, 790, 791, 792]},
 {"id":793,"name":"Nihilego","types":["rock", "poison"],"h":12,"w":555,"exp":257,"ab":[["beast-boost", 0]],"stats":[109, 53, 47, 127, 131, 103],"fl":"One of the Ultra Beasts. It can infect people and Pokemon with a substance it secretes.","evo":[793]},
 {"id":794,"name":"Buzzwole","types":["bug", "fighting"],"h":24,"w":3336,"exp":257,"ab":[["beast-boost", 0]],"stats":[107, 139, 139, 53, 53, 79],"fl":"This Ultra Beast appeared from an Ultra Wormhole. It looks violent but may just be showing off.","evo":[794]},
 {"id":795,"name":"Pheromosa","types":["bug", "fighting"],"h":18,"w":250,"exp":257,"ab":[["beast-boost", 0]],"stats":[71, 137, 37, 137, 37, 151],"fl":"One of the Ultra Beasts. It refuses to touch anything and is said to be afraid of contamination.","evo":[795]},
@@ -1066,9 +1074,9 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":837,"name":"Rolycoly","types":["rock"],"h":3,"w":120,"exp":52,"ab":[["steam-engine", 0], ["heatproof", 1]],"stats":[30, 40, 50, 40, 50, 35],"fl":"It can travel over rough terrain with ease using its single leg. Young ones use heated coal as a lamp.","evo":[837, 838, 839]},
 {"id":838,"name":"Carkol","types":["rock", "fire"],"h":11,"w":780,"exp":144,"ab":[["steam-engine", 0], ["flame-body", 1]],"stats":[80, 60, 90, 60, 70, 50],"fl":"It forms coal inside its body. To keep itself going, it needs to burn its coal steadily.","evo":[837, 838, 839]},
 {"id":839,"name":"Coalossal","types":["rock", "fire"],"h":28,"w":3105,"exp":255,"ab":[["steam-engine", 0], ["flame-body", 1]],"stats":[110, 80, 120, 80, 90, 30],"fl":"Its body is made of coal. When it is burning with coal it lets off massive amounts of soot.","evo":[837, 838, 839]},
-{"id":840,"name":"Applin","types":["grass", "dragon"],"h":2,"w":5,"exp":52,"ab":[["ripen", 0], ["gluttony", 1]],"stats":[40, 40, 80, 40, 40, 20],"fl":"It spends its entire life inside an apple. It hides from enemies by pretending to be an apple.","evo":[840, 841, 842]},
-{"id":841,"name":"Flapple","types":["grass", "dragon"],"h":3,"w":10,"exp":170,"ab":[["ripen", 0], ["hustle", 1]],"stats":[70, 110, 80, 95, 60, 70],"fl":"It flies on wings of apple skin. The skin holds acidic liquid that it spits at enemies.","evo":[840, 841]},
-{"id":842,"name":"Appletun","types":["grass", "dragon"],"h":4,"w":130,"exp":170,"ab":[["ripen", 0], ["thick-fat", 1]],"stats":[110, 85, 80, 100, 80, 30],"fl":"Its skin is sweet and delicious. Appletun hides its body under a maple syrup-like nectar.","evo":[840, 842]},
+{"id":840,"name":"Applin","types":["grass", "dragon"],"h":2,"w":5,"exp":52,"ab":[["ripen", 0], ["gluttony", 1]],"stats":[40, 40, 80, 40, 40, 20],"fl":"It spends its entire life inside an apple. It hides from enemies by pretending to be an apple.","evo":[840, 841, 842, 1011, 1019]},
+{"id":841,"name":"Flapple","types":["grass", "dragon"],"h":3,"w":10,"exp":170,"ab":[["ripen", 0], ["hustle", 1]],"stats":[70, 110, 80, 95, 60, 70],"fl":"It flies on wings of apple skin. The skin holds acidic liquid that it spits at enemies.","evo":[840, 841, 842, 1011, 1019]},
+{"id":842,"name":"Appletun","types":["grass", "dragon"],"h":4,"w":130,"exp":170,"ab":[["ripen", 0], ["thick-fat", 1]],"stats":[110, 85, 80, 100, 80, 30],"fl":"Its skin is sweet and delicious. Appletun hides its body under a maple syrup-like nectar.","evo":[840, 841, 842, 1011, 1019]},
 {"id":843,"name":"Silicobra","types":["ground"],"h":24,"w":76,"exp":52,"ab":[["sand-spit", 0], ["unburden", 1]],"stats":[52, 57, 75, 35, 50, 46],"fl":"It spews sand from its nostrils. While the enemy is blinded it coils around the foe to constrict.","evo":[843, 844]},
 {"id":844,"name":"Sandaconda","types":["ground"],"h":38,"w":655,"exp":179,"ab":[["sand-spit", 0], ["unburden", 1]],"stats":[72, 107, 125, 65, 70, 71],"fl":"When it contracts its whole body, sand blasts out from its sand sac and swirls around it.","evo":[843, 844]},
 {"id":845,"name":"Cramorant","types":["flying", "water"],"h":8,"w":180,"exp":166,"ab":[["gulp-missile", 0]],"stats":[70, 85, 55, 85, 95, 85],"fl":"It swallows prey whole. It always spits the prey back when struck while swallowing.","evo":[845]},
@@ -1126,10 +1134,10 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":897,"name":"Spectrier","types":["ghost"],"h":20,"w":445,"exp":290,"ab":[["grim-neigh", 0]],"stats":[100, 65, 60, 145, 80, 130],"fl":"It probes its surroundings with all its senses save one. The only one it does not use is sight.","evo":[897]},
 {"id":898,"name":"Calyrex","types":["psychic", "grass"],"h":11,"w":77,"exp":340,"ab":[["unnerve", 0]],"stats":[100, 80, 80, 80, 80, 80],"fl":"It ruled all of Galar in ancient times. It has the power to cause great crops or blight.","evo":[898]},
 {"id":899,"name":"Wyrdeer","types":["normal", "psychic"],"h":18,"w":980,"exp":263,"ab":[["intimidate", 0], ["frisk", 1]],"stats":[103, 105, 72, 105, 75, 65],"fl":"It has lived in harmony with humans for ages. A new kind of stag Pokemon from the Hisui region.","evo":[234, 899]},
-{"id":900,"name":"Kleavor","types":["bug", "rock"],"h":18,"w":890,"exp":263,"ab":[["swarm", 0], ["sheer-force", 1]],"stats":[70, 135, 95, 45, 70, 85],"fl":"A violent creature that fells trees with its ax-like arms to mark its territory. From Hisui.","evo":[123, 900]},
+{"id":900,"name":"Kleavor","types":["bug", "rock"],"h":18,"w":890,"exp":263,"ab":[["swarm", 0], ["sheer-force", 1]],"stats":[70, 135, 95, 45, 70, 85],"fl":"A violent creature that fells trees with its ax-like arms to mark its territory. From Hisui.","evo":[123, 212, 900]},
 {"id":901,"name":"Ursaluna","types":["ground", "normal"],"h":24,"w":2900,"exp":275,"ab":[["guts", 0], ["bulletproof", 1]],"stats":[130, 140, 105, 45, 80, 50],"fl":"It can detect the location of hidden items using its psychic power. It evolved in Hisui.","evo":[216, 217, 901]},
 {"id":902,"name":"Basculegion","types":["water", "ghost"],"h":30,"w":1100,"exp":265,"ab":[["swift-swim", 0], ["adaptability", 1]],"stats":[120, 112, 65, 80, 75, 78],"fl":"It became possessed by the souls of other Basculin that could not survive the journey upstream.","evo":[550, 902]},
-{"id":903,"name":"Sneasler","types":["fighting", "poison"],"h":13,"w":430,"exp":265,"ab":[["pressure", 0], ["unburden", 1]],"stats":[80, 130, 60, 40, 80, 120],"fl":"It leaps mountain crags with ease. It is the fastest climber in the Hisui region.","evo":[215, 903]},
+{"id":903,"name":"Sneasler","types":["fighting", "poison"],"h":13,"w":430,"exp":265,"ab":[["pressure", 0], ["unburden", 1]],"stats":[80, 130, 60, 40, 80, 120],"fl":"It leaps mountain crags with ease. It is the fastest climber in the Hisui region.","evo":[215, 461, 903]},
 {"id":904,"name":"Overqwil","types":["dark", "poison"],"h":25,"w":605,"exp":265,"ab":[["poison-point", 0], ["swift-swim", 1]],"stats":[85, 115, 95, 65, 65, 85],"fl":"It possesses a terrifying poisonous body. Its quills are as hard as iron.","evo":[211, 904]},
 {"id":905,"name":"Enamorus","types":["fairy", "flying"],"h":16,"w":480,"exp":290,"ab":[["cute-charm", 0], ["contrary", 1]],"stats":[74, 115, 70, 135, 80, 106],"fl":"The spirit of spring that visits Hisui. It creates fierce blizzards to bring forth new life.","evo":[905]},
 {"id":906,"name":"Sprigatito","types":["grass"],"h":4,"w":41,"exp":62,"ab":[["overgrow", 0], ["protosynthesis", 1]],"stats":[40, 61, 54, 45, 45, 65],"fl":"Its fluffy fur absorbs sunlight. The sweet aroma wafting from its body prevents opponents from focusing.","evo":[906, 907, 908]},
@@ -1162,8 +1170,8 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":933,"name":"Naclstack","types":["rock"],"h":6,"w":105,"exp":130,"ab":[["purifying-salt", 0], ["sturdy", 1]],"stats":[60, 60, 100, 35, 65, 35],"fl":"Salt crystals clump together on its body. It slowly grows by absorbing more salt from the earth.","evo":[932, 933, 934]},
 {"id":934,"name":"Garganacl","types":["rock"],"h":23,"w":2400,"exp":247,"ab":[["purifying-salt", 0], ["sturdy", 1]],"stats":[100, 100, 130, 45, 90, 35],"fl":"Its body is made of salt that was formed over tens of thousands of years. Very tough and durable.","evo":[932, 933, 934]},
 {"id":935,"name":"Charcadet","types":["fire"],"h":6,"w":102,"exp":54,"ab":[["flash-fire", 0], ["flame-body", 1]],"stats":[40, 50, 40, 50, 40, 35],"fl":"A Pokemon made of flames. It fights relentlessly against evil Pokemon, burning with a hot fighting spirit.","evo":[935, 936, 937]},
-{"id":936,"name":"Armarouge","types":["fire", "psychic"],"h":15,"w":855,"exp":167,"ab":[["flash-fire", 0], ["weak-armor", 1]],"stats":[85, 60, 100, 125, 80, 75],"fl":"The armor on its body is formed from the spirit of a fallen hero. Its fierce attacks are feared.","evo":[935, 936]},
-{"id":937,"name":"Ceruledge","types":["fire", "ghost"],"h":16,"w":625,"exp":167,"ab":[["flash-fire", 0], ["weak-armor", 1]],"stats":[75, 125, 80, 60, 100, 85],"fl":"Old blades steeped in grudges form the armor on its body. It fights relentlessly until enemies fall.","evo":[935, 937]},
+{"id":936,"name":"Armarouge","types":["fire", "psychic"],"h":15,"w":855,"exp":167,"ab":[["flash-fire", 0], ["weak-armor", 1]],"stats":[85, 60, 100, 125, 80, 75],"fl":"The armor on its body is formed from the spirit of a fallen hero. Its fierce attacks are feared.","evo":[935, 936, 937]},
+{"id":937,"name":"Ceruledge","types":["fire", "ghost"],"h":16,"w":625,"exp":167,"ab":[["flash-fire", 0], ["weak-armor", 1]],"stats":[75, 125, 80, 60, 100, 85],"fl":"Old blades steeped in grudges form the armor on its body. It fights relentlessly until enemies fall.","evo":[935, 936, 937]},
 {"id":938,"name":"Tadbulb","types":["electric"],"h":3,"w":27,"exp":54,"ab":[["own-tempo", 0], ["damp", 1]],"stats":[61, 48, 38, 38, 33, 46],"fl":"It shakes its tail to generate electricity. If it senses danger it makes its head glow to threaten foes.","evo":[938, 939]},
 {"id":939,"name":"Bellibolt","types":["electric"],"h":12,"w":1130,"exp":168,"ab":[["electromorphosis", 0], ["static", 1]],"stats":[109, 64, 91, 103, 83, 45],"fl":"The round bumps on its body are actually not its eyes. Its real eyes are tiny and almost invisible.","evo":[938, 939]},
 {"id":940,"name":"Wattrel","types":["electric", "flying"],"h":4,"w":36,"exp":53,"ab":[["wind-power", 0], ["volt-absorb", 1]],"stats":[40, 40, 35, 55, 40, 70],"fl":"It dives into the sea using the electricity from its wings to stun prey. It loves storms.","evo":[940, 941]},
@@ -1237,7 +1245,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":1008,"name":"Miraidon","types":["electric", "dragon"],"h":35,"w":2400,"exp":335,"ab":[["hadron-engine", 0]],"stats":[100, 85, 100, 135, 115, 135],"fl":"A Pokemon that appears in Paldean legends. It is said to come from a far distant future.","evo":[1008]},
 {"id":1009,"name":"Walking Wake","types":["water", "dragon"],"h":35,"w":2800,"exp":290,"ab":[["protosynthesis", 0]],"stats":[99, 83, 91, 125, 83, 109],"fl":"One of the Paradox Pokemon. It resembles Suicune from old documents.","evo":[1009]},
 {"id":1010,"name":"Iron Leaves","types":["grass", "psychic"],"h":15,"w":1250,"exp":290,"ab":[["quark-drive", 0]],"stats":[90, 130, 88, 70, 108, 104],"fl":"One of the Paradox Pokemon. It resembles Virizion from old documents about the future.","evo":[1010]},
-{"id":1011,"name":"Dipplin","types":["grass", "dragon"],"h":4,"w":4,"exp":170,"ab":[["supersweet-syrup", 0], ["gluttony", 1]],"stats":[80, 80, 110, 95, 80, 40],"fl":"A Pok\u00e9mon that evolved inside an apple. It coils up to stay in apples longer.","evo":[840, 1011, 1012]},
+{"id":1011,"name":"Dipplin","types":["grass", "dragon"],"h":4,"w":4,"exp":170,"ab":[["supersweet-syrup", 0], ["gluttony", 1]],"stats":[80, 80, 110, 95, 80, 40],"fl":"A Pok\u00e9mon that evolved inside an apple. It coils up to stay in apples longer.","evo":[840, 841, 842, 1011, 1019]},
 {"id":1012,"name":"Poltchageist","types":["grass", "ghost"],"h":10,"w":1,"exp":62,"ab":[["hospitality", 0]],"stats":[40,45,45,74,54,50],"fl":"It mingles with green tea powder, or matcha, and contaminates it. Anyone who drinks the tainted matcha will be turned into a zombie.","evo":[1012,1013]},
 {"id":1013,"name":"Sinistcha","types":["grass", "ghost"],"h":2,"w":22,"exp":142,"ab":[["hospitality", 0]],"stats":[71,60,106,121,80,70],"fl":"Sinistcha looks like a cup of matcha. It hides in tea sets or on shelves in Japanese-style rooms, waiting to catch its prey off guard.","evo":[1012,1013]},
 {"id":1014,"name":"Okidogi","types":["poison", "fighting"],"h":18,"w":922,"exp":197,"ab":[["toxic-chain", 0]],"stats":[88,130,106,70,86,98],"fl":"Okidogi is rarely seen in the wild. It is one of the three loyal retainers bound to Pecharunt by its mochi.","evo":[1014]},
@@ -1245,7 +1253,7 @@ var POKEMON=[{"id":1,"name":"Bulbasaur","types":["grass", "poison"],"h":7,"w":69
 {"id":1016,"name":"Fezandipiti","types":["poison", "fairy"],"h":14,"w":300,"exp":197,"ab":[["toxic-chain", 0]],"stats":[88,91,82,70,125,102],"fl":"Fezandipiti uses its beautiful appearance to attract prey. It is the third of Pecharunt's loyal retainers.","evo":[1016]},
 {"id":1017,"name":"Ogerpon","types":["grass"],"h":12,"w":398,"exp":275,"ab":[["defiant", 0], ["mold-breaker", 1]],"stats":[80, 120, 84, 60, 96, 110],"fl":"It battled with masks made of stone. Its true power is unleashed when its mask is broken.","evo":[1022]},
 {"id":1018,"name":"Archaludon","types":["steel", "dragon"],"h":20,"w":1600,"exp":300,"ab":[["stamina", 0], ["sturdy", 1]],"stats":[90, 105, 130, 125, 65, 85],"fl":"Its body is light yet incredibly tough. It is said to have been based on a bridge.","evo":[884, 1023]},
-{"id":1019,"name":"Hydrapple","types":["grass", "dragon"],"h":18,"w":930,"exp":261,"ab":[["supersweet-syrup", 0], ["gluttony", 1]],"stats":[106, 80, 110, 120, 80, 44],"fl":"Seven Applin lurk inside an apple and work together. Their collective psychic power is immense.","evo":[840, 1011, 1012]},
+{"id":1019,"name":"Hydrapple","types":["grass", "dragon"],"h":18,"w":930,"exp":261,"ab":[["supersweet-syrup", 0], ["gluttony", 1]],"stats":[106, 80, 110, 120, 80, 44],"fl":"Seven Applin lurk inside an apple and work together. Their collective psychic power is immense.","evo":[840, 841, 842, 1011, 1019]},
 {"id":1020,"name":"Gouging Fire","types":["fire", "dragon"],"h":35,"w":5900,"exp":290,"ab":[["protosynthesis", 0]],"stats":[105, 115, 90, 70, 80, 120],"fl":"One of the Paradox Pokemon. It resembles Entei from old documents.","evo":[1013]},
 {"id":1021,"name":"Raging Bolt","types":["electric", "dragon"],"h":52,"w":4800,"exp":290,"ab":[["protosynthesis", 0]],"stats":[125, 73, 91, 137, 89, 75],"fl":"One of the Paradox Pokemon. It resembles Raikou from old documents.","evo":[1014]},
 {"id":1022,"name":"Iron Boulder","types":["rock", "psychic"],"h":15,"w":1623,"exp":290,"ab":[["quark-drive", 0]],"stats":[90, 120, 80, 68, 108, 124],"fl":"One of the Paradox Pokemon. It resembles Terrakion from documents about the future.","evo":[1015]},
@@ -1950,21 +1958,132 @@ function selectPokemon(id){
     "</div>";
   }).join("");
 
-  // evo
+  // evo - with branch detection
   var validEvo=p.evo.filter(function(eid){return BY_ID[eid];});
   var evoHtml="";
+  var evoCard=function(eid){
+    var ep=BY_ID[eid];
+    return "<div class=\"evo-item"+(ep.id===id?" cur":"")+"\" onclick=\"selectPokemon("+ep.id+")\">"
+      +"<img src=\""+sprite(ep.id)+"\" alt=\""+ep.name+"\" loading=\"lazy\">"
+      +"<span class=\"evo-name\">"+ep.name+"</span>"
+      +"<span class=\"evo-num\">"+pad(ep.id)+"</span>"
+      +"</div>";
+  };
   if(validEvo.length>1){
-    evoHtml=validEvo.map(function(eid,i){
-      var ep=BY_ID[eid];
-      return (i>0?"<span class=\"evo-arr\">&#8250;</span>":"")+
-        "<div class=\"evo-item"+(ep.id===id?" cur":"")+"\" onclick=\"selectPokemon("+ep.id+")\">"+
-        "<img src=\""+sprite(ep.id)+"\" alt=\""+ep.name+"\" loading=\"lazy\">"+
-        "<span class=\"evo-name\">"+ep.name+"</span>"+
-        "<span class=\"evo-num\">"+pad(ep.id)+"</span>"+
-        "</div>";
-    }).join("");
+    // BRANCH_PRED maps pokemon id -> direct predecessor id (pre-merge)
+    // This handles cases where merged evo arrays pollute sibling detection
+    var BRANCH_PRED={
+      182:44,   // Bellossom <- Gloom
+      186:61,   // Politoed <- Poliwhirl
+      199:79,   // Slowking <- Slowpoke
+      475:281,  // Gallade <- Kirlia
+      478:361,  // Froslass <- Snorunt
+      792:790,  // Lunala <- Cosmoem
+      267:266,  // Beautifly <- Silcoon
+      268:265,  // Cascoon <- Wurmple (parallel to Silcoon)
+      269:268,  // Dustox <- Cascoon
+      903:215,  // Sneasler <- Sneasel
+      900:123,  // Kleavor <- Scyther
+      863:53,   // Perrserker <- Persian
+      865:83,   // Sirfetch'd <- Farfetch'd
+      864:222,  // Cursola <- Corsola
+      937:935,  // Ceruledge <- Charcadet
+      1019:1011,// Hydrapple <- Dipplin
+      842:840,  // Appletun <- Applin (parallel to Flapple)
+      841:840,  // Flapple <- Applin (parallel to Appletun)
+      1011:840, // Dipplin <- Applin (parallel branch)
+      106:236,  // Hitmonlee <- Tyrogue (lower id, needs explicit pred)
+      107:236,  // Hitmonchan <- Tyrogue (parallel)
+      237:236,  // Hitmontop <- Tyrogue (parallel)
+      134:133,  // Vaporeon <- Eevee
+      135:133,  // Jolteon <- Eevee
+      136:133,  // Flareon <- Eevee
+      196:133,  // Espeon <- Eevee
+      197:133,  // Umbreon <- Eevee
+      470:133,  // Leafeon <- Eevee
+      471:133,  // Glaceon <- Eevee
+      700:133,  // Sylveon <- Eevee
+      236:-1    // Tyrogue is ROOT (its evolutions have lower IDs)
+    };
+    // Build predecessor map for this chain
+    var chainSet={};
+    validEvo.forEach(function(eid){chainSet[eid]=true;});
+    var directPred={};
+    validEvo.forEach(function(eid){
+      if(BRANCH_PRED[eid]!==-1 && BRANCH_PRED[eid]!==undefined && chainSet[BRANCH_PRED[eid]]){
+        directPred[eid]=BRANCH_PRED[eid];
+      } else if(BRANCH_PRED[eid]===-1){
+        directPred[eid]=null; // explicit root
+      } else {
+        // Default: closest smaller-id chain member that appears in this mon's evo array
+        var ep=BY_ID[eid];
+        var candidates=validEvo.filter(function(x){return x<eid && ep.evo.indexOf(x)>=0;});
+        directPred[eid]=candidates.length?candidates.reduce(function(a,b){return a>b?a:b;}):null;
+      }
+    });
+    // Assign stages via BFS
+    var stageOf={};
+    validEvo.forEach(function(eid){if(!directPred[eid])stageOf[eid]=0;});
+    var changed=true;
+    while(changed){
+      changed=false;
+      validEvo.forEach(function(eid){
+        if(stageOf[eid]!==undefined)return;
+        var pred=directPred[eid];
+        if(pred!==null && stageOf[pred]!==undefined){stageOf[eid]=stageOf[pred]+1;changed=true;}
+      });
+    }
+    // Group by stage
+    var stageGroups={};
+    validEvo.forEach(function(eid){
+      var s=stageOf[eid]||0;
+      if(!stageGroups[s])stageGroups[s]=[];
+      stageGroups[s].push(eid);
+    });
+    var stages=Object.keys(stageGroups).sort(function(a,b){return a-b;}).map(function(s){
+      return stageGroups[s].sort(function(a,b){return a-b;});
+    });
+    // Check if any stage has 4+ members -> use fan (top/down) layout
+    var hasFan=stages.some(function(g){return g.length>=4;});
+    var parts=[];
+    if(hasFan){
+      // Fan layout: solo stages inline, then big branch stage goes below as a row
+      // Build: [solo] -> [solo] -> ... then fan group below with down arrows
+      var soloStages=stages.filter(function(g){return g.length<4;});
+      var fanStages=stages.filter(function(g){return g.length>=4;});
+      // Render solo chain first
+      var topParts=[];
+      soloStages.forEach(function(group,si){
+        if(si>0) topParts.push("<span class=\"evo-arr\">&#8250;</span>");
+        topParts.push(evoCard(group[0]));
+      });
+      // Down arrows
+      var arrowRow="&#8595;".repeat(Math.min(fanStages[0].length,8)).split("").join(" ");
+      // Eeveelution row
+      var fanRow=fanStages[0].map(evoCard).join("");
+      evoHtml="<div class=\"evo-fan\">"
+        +"<div class=\"evo-fan-top\">"+topParts.join("")+"</div>"
+        +"<div class=\"evo-fan-arrow\">&#8595;</div>"
+        +"<div class=\"evo-fan-row\">"+fanRow+"</div>"
+        +"</div>";
+    } else {
+      stages.forEach(function(group,si){
+        if(si>0){
+          if(group.length>1){
+            parts.push("<div class=\"evo-split-arrows\"><span class=\"evo-arr-up\">&#8599;</span><span class=\"evo-arr-dn\">&#8600;</span></div>");
+          } else {
+            parts.push("<span class=\"evo-arr\">&#8250;</span>");
+          }
+        }
+        if(group.length===1){
+          parts.push(evoCard(group[0]));
+        } else {
+          parts.push("<div class=\"evo-branch\">"+group.map(evoCard).join("")+"</div>");
+        }
+      });
+      evoHtml=parts.join("");
+    }
   }
-
   var dp=document.getElementById("dp");
   dp.innerHTML=
     "<div class=\"hero\">"+
@@ -2008,7 +2127,11 @@ function selectPokemon(id){
       var mgrad=TG[mt1]||"135deg,#333,#111";
       var mFormKey=m.key==="mega"?"mega":m.key;
       var mImgKey=id+"-"+mFormKey;
-      var mArt="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+mImgKey+".png";
+      var ZUKAN_URLS={
+        "358-mega":"https://zukan.pokemon.co.jp/zukan-api/up/images/index/e89be39d6dfc089bbc8bba053c6a37f9.png"
+      };
+      var mZukan=ZUKAN_URLS[mImgKey]||null;
+      var mArt=mZukan||"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+mImgKey+".png";
       var mSpr="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+mImgKey+".png";
       var mHs=hsArtwork(id,mFormKey);
       var mPdb=pdbHome(p.name,mFormKey);
